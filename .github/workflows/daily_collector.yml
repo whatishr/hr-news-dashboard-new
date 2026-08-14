@@ -7,7 +7,7 @@ on:
 
 permissions:
   contents: write
-  
+
 jobs:
   collect:
     runs-on: ubuntu-latest
@@ -39,13 +39,10 @@ jobs:
       - name: 갱신된 데이터 커밋 및 푸시
         run: |
           git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
 
           git add hr_news.csv collector_status.json
 
-          # 변경 사항이 있을 때만 커밋하고, 푸시 직전 원격 저장소와 안전하게 병합합니다.
-          if ! git diff --cached --quiet; then
-            git commit -m "Auto: 매일 HR 뉴스 갱신"
-            git pull --rebase origin main
-            git push origin main
-          fi
+          git diff --cached --quiet || git commit -m "Auto: 매일 HR 뉴스 갱신"
+
+          git push origin main
