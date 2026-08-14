@@ -1,0 +1,9 @@
+.env
+__pycache__/
+*.pyc
+check_models.py
+data/
+cron.yml
+app_* 
+collector*api사용*.py
+collector*260812.py

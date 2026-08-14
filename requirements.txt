@@ -1,0 +1,8 @@
+streamlit
+pandas
+requests
+beautifulsoup4
+trafilatura
+python-dotenv
+google-genai==1.47.0
+urllib3
