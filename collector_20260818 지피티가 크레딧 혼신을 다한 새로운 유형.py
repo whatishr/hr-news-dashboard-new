@@ -1742,7 +1742,6 @@ STEP 3. 강제 제외
 - 일반 칼럼
 
 단,
-
 노동법·판례를 구체적으로 설명하고
 실무 대응방법이 명확한 전문 노무·법률 기고는
 포함할 수 있습니다.
@@ -1854,8 +1853,6 @@ HR 뉴스가 되지 않습니다.
 
 실제 기업 HR 운영 사례이므로
 제외하지 않습니다.
-
-
 ============================================================
 STEP 4. 채용 특별 기준
 ============================================================
@@ -1892,7 +1889,6 @@ IT·게임·테크 범위:
 - 일반 비IT기업의 단순 공개채용
 
 단,
-
 다음은 업종 제한 없이 판단합니다.
 
 - 희망퇴직
@@ -1956,55 +1952,6 @@ STEP 6. 카테고리
 자격심사를 통과한 기사만 분류합니다.
 
 
-============================================================
-카테고리 경계 판단의 핵심 원칙
-============================================================
-
-카테고리는 기사에 등장하는 키워드가 아니라
-"가장 중요한 변화의 대상"을 기준으로 결정합니다.
-
-다음 두 질문을 먼저 비교합니다.
-
-Q1.
-
-"사람 자체의 규모·이동·채용·퇴직·직무가 바뀌는가?"
-
-YES
-→ 채용·인력운영
-
-Q2.
-
-"사람을 관리하는 규칙·제도·일하는 방식이 바뀌는가?"
-
-YES
-→ HR 제도·조직운영
-
-
-[핵심 구분]
-
-사람의 이동과 구성 변화
-→ 채용·인력운영
-
-사람을 관리하는 제도와 운영방식 변화
-→ HR 제도·조직운영
-
-
-키워드가 겹치더라도
-기사의 핵심 사건을 기준으로 하나만 선택합니다.
-
-"채용"이라는 단어가 있다고
-무조건 채용·인력운영이 아닙니다.
-
-"조직"이라는 단어가 있다고
-무조건 HR 제도·조직운영이 아닙니다.
-
-"AI"라는 단어가 있다고
-무조건 HR 제도·조직운영이 아닙니다.
-
-"리스킬링"이라는 단어가 있다고
-무조건 채용·인력운영이 아닙니다.
-
-
 [노동법·정책·판례]
 
 핵심이 외부 법·제도·공식 정책·법적 판단
@@ -2041,9 +1988,11 @@ YES
 - 쟁의
 - 노사갈등
 - 복리후생
-
 다음 키워드가 핵심이면
-무조건 보상·노사관계를 우선합니다.
+
+무조건
+
+보상·노사관계를 우선합니다.
 
 - 노조
 - 임단협
@@ -2052,80 +2001,26 @@ YES
 - 쟁의
 - 파업
 - 노동조합 요구
-
 AI
 채용
 인력
 보다 우선합니다.
 
-
 [채용·인력운영]
 
-핵심 질문:
+HR이 직접 관리하는 인력의
+유입·유지·감축·전환
 
-"회사가 사람을 뽑거나, 내보내거나,
-인력의 규모·배치·직무를 실제로 바꾸는가?"
-
-즉,
-"사람의 이동과 구성 변화"가 핵심인 기사입니다.
-
-포함:
-
-- IT·게임·테크 기업의 채용
-- 채용 규모 확대·축소
-- 채용전형 변경
-- 채용평가 방식 변경
-- 신입·경력 채용
+- IT·게임·테크 채용
+- 채용평가
 - 온보딩
+- 리텐션
 - 희망퇴직
-- 명예퇴직
 - 구조조정
 - 인력감축
-- 대규모 해고
 - 인력재배치
 - 직무전환
-- 조직 간 인력 이동
-- AI 도입에 따른 실제 인력구조 변화
 - 리스킬링
-- 실제 인력운영 방식 변경
-
-판단 기준:
-
-"이 기사의 핵심이 사람의 수, 이동, 배치,
-채용 또는 직무 변화인가?"
-
-YES
-→ 채용·인력운영
-
-
-[채용평가 구분]
-
-채용 전 평가·선발 기준의 변화
-→ 채용·인력운영
-
-입사 후 직원의 평가·성과평가 제도의 변화
-→ HR 제도·조직운영
-
-
-[리스킬링 구분]
-
-리스킬링이라는 단어만으로
-카테고리를 결정하지 않습니다.
-
-실제 직무전환·인력재배치가 핵심이면
-→ 채용·인력운영
-
-교육·역량개발·인재육성 제도 자체가 핵심이면
-→ HR 제도·조직운영
-
-예:
-
-"A사, AI 전환 위해 직원 500명 직무전환"
-→ 채용·인력운영
-
-"A사, 전 직원 대상 AI 리스킬링 교육 도입"
-→ HR 제도·조직운영
-
 
 산업 인력수요 전망이나
 미래 직업 전망은 제외합니다.
@@ -2133,16 +2028,8 @@ YES
 
 [HR 제도·조직운영]
 
-핵심 질문:
-
-"회사가 사람을 관리하고 일하게 하는
-규칙·제도·방식을 실제로 바꾸는가?"
-
-즉,
-"사람을 어떻게 관리하고 운영하는가"가
-핵심인 기사입니다.
-
-포함:
+기업 내부 HR 제도 또는
+일하는 방식의 실제 변화
 
 - 평가제도
 - 성과관리
@@ -2156,74 +2043,10 @@ YES
 - 출근정책
 - 주4일제
 - 유연근무
-- 근로시간 운영방식
 - 인재육성
-- 교육·역량개발 제도
 - 실제 사내 HR AI 적용
-- 실제 피플애널리틱스 적용
+- 실제 피플애널리틱스
 
-판단 기준:
-
-"이 기사의 핵심이
-사람을 어떻게 평가·관리·육성하고,
-어떻게 일하게 할 것인지에 대한
-회사 내부 제도나 운영방식의 변화인가?"
-
-YES
-→ HR 제도·조직운영
-
-
-[조직개편 구분]
-
-조직개편이라는 단어만으로
-카테고리를 결정하지 않습니다.
-
-조직개편으로 인력 규모·배치·직무 이동이
-발생하는 것이 핵심이면
-→ 채용·인력운영
-
-조직 운영체계·평가체계·관리방식의 변화가
-핵심이면
-→ HR 제도·조직운영
-
-예:
-
-"A사, 조직개편으로 300명 인력 재배치"
-→ 채용·인력운영
-
-"A사, 조직개편과 함께 평가체계 전면 개편"
-→ HR 제도·조직운영
-
-
-[AI 관련 분류 기준]
-
-AI라는 단어 자체는
-카테고리 판단 근거가 아닙니다.
-
-AI 도입으로 실제 채용·감원·인력재배치·직무전환이
-발생하는 것이 핵심이면
-→ 채용·인력운영
-
-AI를 평가·인사관리·피플애널리틱스 등에
-실제 적용하는 것이 핵심이면
-→ HR 제도·조직운영
-
-AI가 일자리를 대체할 것이다,
-AI가 미래 직업을 바꿀 것이다,
-AI 시대 인재상 등의 일반적인 전망은
-HR 기사로 인정하지 않습니다.
-
-
-[인재육성 구분]
-
-채용 후 직원의 교육·역량개발·육성 제도가
-핵심이면
-→ HR 제도·조직운영
-
-단,
-교육의 결과로 실제 직무전환·인력재배치가 발생하고
-그 인력 변화가 기사의 핵심 사건이면
-→ 채용·인력운영
 
 ============================================================
 STEP 7. 카테고리 우선순위
@@ -2232,58 +2055,16 @@ STEP 7. 카테고리 우선순위
 1. 스마일게이트 자체 주요 기사
 → 오늘의 스마일게이트
 
-2. 외부 법·정책·공식 결정·법적 판단이 핵심
+2. 법·정책·판결
 → 노동법·정책·판례
 
-3. 임금·성과급·노조·임단협·교섭·파업 등
-돈 또는 노사관계가 핵심
+3. 노조·임금·성과급·교섭·파업
 → 보상·노사관계
 
-4. 사람의 채용·퇴직·감축·배치·직무 이동이 핵심
+4. 채용·퇴직·감원·직무전환
 → 채용·인력운영
 
-5. 평가·성과관리·승진·근무제도·조직문화·
-인재육성·HR AI 등
-사람을 관리하고 운영하는 제도가 핵심
-→ HR 제도·조직운영
-
-
-[중요]
-
-채용·인력운영과 HR 제도·조직운영이
-동시에 등장하는 경우가 많습니다.
-
-이때는 키워드 개수가 아니라
-"기사의 핵심 변화가 무엇인가?"를 판단합니다.
-
-사람의 이동·규모·직무 변화
-→ 채용·인력운영
-
-사람을 관리하는 규칙·제도·운영방식 변화
-→ HR 제도·조직운영
-
-
-예:
-
-"A사, AI 도입으로 500명 직무전환"
-→ 채용·인력운영
-
-"A사, AI 기반 인사평가 시스템 도입"
-→ HR 제도·조직운영
-
-"A사, 신규 개발자 300명 채용"
-→ 채용·인력운영
-
-"A사, 개발자 채용 평가방식 개편"
-→ 채용·인력운영
-
-"A사, 전 직원 성과평가 제도 개편"
-→ HR 제도·조직운영
-
-"A사, 조직개편으로 300명 희망퇴직"
-→ 채용·인력운영
-
-"A사, 조직개편에 맞춰 평가·승진체계 개편"
+5. 그 외 내부 HR 제도
 → HR 제도·조직운영
 
 
@@ -2315,58 +2096,24 @@ STEP 9. topic
 topic은 기사 제목이 아니라
 중복·다양성 관리용 사건 유형입니다.
 
-[노동법·정책·판례]
+예:
 
-- 육아휴직
-- 근로시간
-- 통상임금
-- 부당해고
-- 연차
-- 직장내괴롭힘
-- 노조법
-- 노동정책
-
-
-[보상·노사관계]
-
-- 성과급
-- 임금
-- 임단협
-- 단체교섭
-- 파업
-- 노동조합
-- 복리후생
-
-
-[채용·인력운영]
-
-- 신입채용
-- 경력채용
-- 채용평가
-- 채용전형
-- 온보딩
-- 희망퇴직
-- 구조조정
-- 인력감축
-- 인력재배치
-- 직무전환
-- 리스킬링
-
-
-[HR 제도·조직운영]
-
-- 평가제도
-- 성과관리
-- 승진제도
-- 직급제도
-- 조직개편
-- 조직문화
-- 유연근무
-- 재택근무
-- 근무제도
-- 인재육성
-- HR AI
-- 피플애널리틱스
+육아휴직
+근로시간
+통상임금
+부당해고
+성과급
+임단협
+파업
+채용평가
+신입채용
+희망퇴직
+구조조정
+직무전환
+평가제도
+조직문화
+유연근무
+HR AI
 
 
 ============================================================
@@ -2386,9 +2133,7 @@ topic은 기사 제목이 아니라
 - reason
 
 include=false이면 category=null
-
 include=true이면 rejection_type=null
-
 
 rejection_type:
 
@@ -2406,14 +2151,11 @@ rejection_type:
 - low_practical_value
 - smilegate_not_central
 
-
 JSON만 출력하세요.
-
 
 [기사 목록]
 
 {json.dumps(article_payload, ensure_ascii=False)}
-
 
 [JSON 형식]
 
@@ -3316,66 +3058,6 @@ def select_category_candidates(
 
     return selected
 
-    # --------------------------------------------------------
-    # 먼저 서로 다른 topic
-    # --------------------------------------------------------
-
-    for article in category_articles:
-
-        if len(selected) >= limit:
-            break
-
-        topic = (
-            article.get(
-                "topic",
-                ""
-            )
-            .strip()
-            .lower()
-        )
-
-        if not topic:
-            topic = (
-                f"article_{article['id']}"
-            )
-
-        if topic in used_topics:
-            continue
-
-        selected.append(
-            article
-        )
-
-        used_topics.add(
-            topic
-        )
-
-    # --------------------------------------------------------
-    # 부족하면 고득점 기사 추가
-    # --------------------------------------------------------
-
-    for article in category_articles:
-
-        if len(selected) >= limit:
-            break
-
-        if article in selected:
-            continue
-
-        selected.append(
-            article
-        )
-
-    selected.sort(
-        key=lambda article: (
-            article["pub_dt"]
-        ),
-        reverse=True
-    )
-
-    return selected
-
-
 # ============================================================
 # 기본 요약
 # ============================================================
@@ -3637,6 +3319,176 @@ def load_previous_data() -> pd.DataFrame:
             columns=CSV_COLUMNS
         )
 
+
+def _normalize_event_key(value: Any) -> str:
+
+    value = str(value or "").strip().lower()
+    value = re.sub(r"[^a-z0-9]+", "_", value)
+    return value.strip("_")[:120]
+
+
+def _fallback_event_key(article: Dict[str, Any]) -> str:
+
+    title_key = _normalize_event_key(article.get("title", ""))
+    return title_key or f"smilegate_article_{article.get('id', 'unknown')}"
+
+
+def _normalize_event_status(value: Any) -> str:
+
+    allowed = {
+        "announcement",
+        "launch",
+        "update",
+        "milestone",
+        "result",
+        "partnership",
+        "event",
+        "management",
+        "other"
+    }
+    status = str(value or "").strip().lower()
+    return status if status in allowed else "other"
+
+
+def get_recent_smilegate_articles(
+    days: int = 14
+) -> List[Dict[str, Any]]:
+
+    previous_df = load_previous_data()
+
+    if previous_df.empty:
+        return []
+
+    smilegate_df = previous_df[
+        previous_df["category"] == CATEGORY_SMILEGATE
+    ].copy()
+
+    if smilegate_df.empty:
+        return []
+
+    published_at = pd.to_datetime(
+        smilegate_df["pubDate"],
+        errors="coerce",
+        utc=True
+    )
+    collected_at = pd.to_datetime(
+        smilegate_df["collected_at"],
+        errors="coerce",
+        utc=True
+    )
+    smilegate_df["_event_dt"] = published_at.fillna(collected_at)
+
+    cutoff = (
+        datetime.datetime.now(datetime.timezone.utc)
+        - datetime.timedelta(days=days)
+    )
+
+    smilegate_df = smilegate_df[
+        smilegate_df["_event_dt"] >= cutoff
+    ]
+
+    return smilegate_df.sort_values(
+        "_event_dt",
+        ascending=False
+    ).head(40).to_dict(orient="records")
+
+
+def review_smilegate_history_with_gemini(
+    today_articles: List[Dict[str, Any]],
+    history_articles: List[Dict[str, Any]]
+) -> List[Dict[str, Any]]:
+    """Keep new Smilegate events, but suppress 14-day repeats."""
+
+    if not today_articles:
+        return []
+
+
+    today_payload = [
+        {
+            "id": article["id"],
+            "title": article.get("title", ""),
+            "description": article.get("description", ""),
+            "topic": article.get("topic", ""),
+            "date": article["pub_dt"].strftime("%Y-%m-%d %H:%M")
+        }
+        for article in today_articles
+    ]
+
+    history_payload = [
+        {
+            "title": article.get("title", ""),
+            "summary": article.get("summary", ""),
+            "topic": article.get("topic", ""),
+            "event_key": article.get("event_key", ""),
+            "event_status": article.get("event_status", ""),
+            "date": str(article.get("pubDate", ""))
+        }
+        for article in history_articles
+    ]
+
+    prompt = f"""
+당신은 스마일게이트 뉴스의 사건 중복을 판단하는 편집자입니다.
+오늘 기사와 최근 14일 저장 기사를 비교하세요.
+
+같은 게임·서비스·회사명이 나온다는 이유만으로 같은 사건으로 판단하지 마세요.
+새로운 출시, 업데이트, 성과·수치, 실적, 계약, 투자, 파트너십, 행사, 사업 발표는 별도 사건으로 유지합니다.
+단순 재보도·해설·시장공략 확대처럼 기존 발표의 내용을 반복할 뿐 새 사실이 없는 기사는 제외합니다.
+
+각 오늘 기사마다 반드시 결과를 냅니다.
+- is_duplicate=true: 과거 동일 사건의 새 정보 없는 재보도이므로 제외
+- is_duplicate=false: 새 사건 또는 기존 사건의 의미 있는 신규 업데이트이므로 유지
+- event_key: 동일 사건이면 과거 key를 그대로 재사용하고, 새 사건이면 소문자 영문/숫자/밑줄로 새 key 생성
+- event_status: announcement, launch, update, milestone, result, partnership, event, management, other 중 하나
+
+[오늘 기사]
+{json.dumps(today_payload, ensure_ascii=False)}
+
+[최근 14일 기사]
+{json.dumps(history_payload, ensure_ascii=False)}
+
+JSON만 출력하세요.
+{{
+  "results": [
+    {{
+      "id": 1,
+      "is_duplicate": false,
+      "event_key": "smilegate_example_launch",
+      "event_status": "launch",
+      "reason": "새 출시 사실"
+    }}
+  ]
+}}
+""".strip()
+
+    data = call_gemini_json(prompt, temperature=0.0)
+    result_by_id: Dict[int, Dict[str, Any]] = {}
+
+    if isinstance(data, dict):
+        results = data.get("results", [])
+        if isinstance(results, list):
+            for result in results:
+                if not isinstance(result, dict):
+                    continue
+                try:
+                    result_by_id[int(result.get("id"))] = result
+                except (TypeError, ValueError):
+                    continue
+
+    reviewed = []
+    for article in today_articles:
+        result = result_by_id.get(article["id"], {})
+        if parse_bool(result.get("is_duplicate", False)):
+            continue
+
+        item = dict(article)
+        event_key = _normalize_event_key(result.get("event_key", ""))
+        item["event_key"] = event_key or _fallback_event_key(item)
+        item["event_status"] = _normalize_event_status(
+            result.get("event_status", "other")
+        )
+        reviewed.append(item)
+
+    return reviewed
 
 def save_dataframe(
     data_frame: pd.DataFrame
