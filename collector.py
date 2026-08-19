@@ -4391,7 +4391,8 @@ def run_collection() -> bool:
     # --------------------------------------------------------
     # 6. 오늘 신규 기사 선정
     # --------------------------------------------------------
-
+    existing_topics: Set[str] = set()
+    
     selected_by_category: Dict[
         str,
         List[Dict[str, Any]]
