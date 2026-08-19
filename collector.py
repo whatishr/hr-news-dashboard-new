@@ -3321,64 +3321,6 @@ def select_category_candidates(
 
     return selected
 
-    # --------------------------------------------------------
-    # 먼저 서로 다른 topic
-    # --------------------------------------------------------
-
-    for article in category_articles:
-
-        if len(selected) >= limit:
-            break
-
-        topic = (
-            article.get(
-                "topic",
-                ""
-            )
-            .strip()
-            .lower()
-        )
-
-        if not topic:
-            topic = (
-                f"article_{article['id']}"
-            )
-
-        if topic in used_topics:
-            continue
-
-        selected.append(
-            article
-        )
-
-        used_topics.add(
-            topic
-        )
-
-    # --------------------------------------------------------
-    # 부족하면 고득점 기사 추가
-    # --------------------------------------------------------
-
-    for article in category_articles:
-
-        if len(selected) >= limit:
-            break
-
-        if article in selected:
-            continue
-
-        selected.append(
-            article
-        )
-
-    selected.sort(
-        key=lambda article: (
-            article["pub_dt"]
-        ),
-        reverse=True
-    )
-
-    return selected
 
 
 # ============================================================
@@ -3642,6 +3584,57 @@ def load_previous_data() -> pd.DataFrame:
             columns=CSV_COLUMNS
         )
 
+def load_previous_smilegate_articles() -> List[Dict[str, Any]]:
+    """
+    기존 CSV에서 오늘의 스마일게이트 기사만 가져옵니다.
+
+    오늘 수집분과 과거 기사 사이의
+    동일 사건 중복검사에 사용합니다.
+    """
+
+    previous_df = load_previous_data()
+
+    if previous_df.empty:
+        return []
+
+    previous_articles = []
+
+    for _, row in previous_df.iterrows():
+
+        if str(
+            row.get("category", "")
+        ).strip() != CATEGORY_SMILEGATE:
+            continue
+
+        title = clean_text(
+            row.get("title", "")
+        )
+
+        if not title:
+            continue
+
+        pub_date = parse_pub_date(
+            str(row.get("pubDate", ""))
+        )
+
+        if pub_date is None:
+            continue
+
+        previous_articles.append({
+            "title": title,
+            "description": clean_text(
+                row.get("summary", "")
+            ),
+            "pubDate": str(
+                row.get("pubDate", "")
+            ),
+            "pub_dt": pub_date,
+            "link": str(
+                row.get("link", "")
+            ).strip(),
+        })
+
+    return previous_articles
 
 def save_dataframe(
     data_frame: pd.DataFrame
@@ -4024,6 +4017,362 @@ def run_collection() -> bool:
         review_duplicates_with_gemini(
             dedup_pool
         )
+    )
+
+    # --------------------------------------------------------
+    # 4-1. 과거 CSV의 스마일게이트 기사와 중복검사
+    #
+    # 오늘 기사와 날짜가 달라도
+    # 동일 사건이면 오늘 기사를 제외합니다.
+    # --------------------------------------------------------
+
+    duplicate_reviewed = (
+        exclude_smilegate_duplicates_with_history(
+            duplicate_reviewed
+        )
+    )
+    def exclude_smilegate_duplicates_with_history(
+    articles: List[Dict[str, Any]]
+) -> List[Dict[str, Any]]:
+
+    smilegate_articles = [
+        article
+        for article in articles
+        if article.get("category")
+        == CATEGORY_SMILEGATE
+    ]
+
+    other_articles = [
+        article
+        for article in articles
+        if article.get("category")
+        != CATEGORY_SMILEGATE
+    ]
+
+    if not smilegate_articles:
+        return articles
+
+    previous_smilegate = (
+        load_previous_smilegate_articles()
+    )
+
+    if not previous_smilegate:
+        return articles
+
+    # --------------------------------------------------------
+    # 너무 오래된 기사는 비교하지 않도록 제한
+    # --------------------------------------------------------
+
+    latest_date = max(
+        article["pub_dt"]
+        for article in smilegate_articles
+    )
+
+    history_limit = (
+        latest_date
+        - datetime.timedelta(days=14)
+    )
+
+    previous_smilegate = [
+        article
+        for article in previous_smilegate
+        if article["pub_dt"] >= history_limit
+    ]
+
+    if not previous_smilegate:
+        return articles
+
+    article_payload = []
+
+    for article in smilegate_articles:
+        article_payload.append({
+            "id": article["id"],
+            "title": article["title"],
+            "description": article.get(
+                "description",
+                ""
+            ),
+            "date": article["pub_dt"].strftime(
+                "%Y-%m-%d %H:%M"
+            )
+        })
+
+    history_payload = []
+
+    for article in previous_smilegate:
+        history_payload.append({
+            "title": article["title"],
+            "description": article.get(
+                "description",
+                ""
+            ),
+            "date": article["pub_dt"].strftime(
+                "%Y-%m-%d %H:%M"
+            )
+        })
+
+    prompt = f"""
+당신은 스마일게이트 뉴스 브리핑의
+'과거 기사 중복 검사' 편집자입니다.
+
+오늘 새로 수집된 스마일게이트 기사와
+과거에 이미 저장된 스마일게이트 기사를 비교합니다.
+
+목표는
+
+"이미 이전 날짜에 다룬 동일 사건을
+오늘 다시 보도한 기사라면 제외"
+
+하는 것입니다.
+
+
+============================================================
+중요한 원칙
+============================================================
+
+날짜가 다르다는 이유만으로 중복으로 판단하지 마세요.
+
+핵심은
+'같은 사건을 다시 보도한 것인지'
+입니다.
+
+
+[중복으로 판단]
+
+다음 요소가 실질적으로 같으면 중복입니다.
+
+1. 같은 스마일게이트 게임·서비스·사업·조직
+2. 같은 핵심 사건
+3. 같은 발표·결정·성과
+4. 새로운 핵심 사실이 거의 없음
+
+예:
+
+과거:
+"스마일게이트, 신작 A 글로벌 출시"
+
+오늘:
+"스마일게이트 신작 A 글로벌 시장 공략"
+
+→ 같은 글로벌 출시 사건이면 중복
+
+
+과거:
+"스마일게이트, 신작 A 출시"
+
+오늘:
+"스마일게이트 신작 A 첫 대규모 업데이트"
+
+→ 새로운 업데이트 사건이므로 중복 아님
+
+
+과거:
+"스마일게이트, 직원 300명 채용"
+
+오늘:
+"스마일게이트, AI 조직 신설"
+
+→ 서로 다른 사건이므로 중복 아님
+
+
+============================================================
+특히 주의
+============================================================
+
+단순히 같은 게임이나 같은 사업을 다룬다고
+중복 처리하지 마세요.
+
+다음은 별도 사건입니다.
+
+- 신작 발표 → 출시
+- 출시 → 업데이트
+- 업데이트 → 흥행 성과
+- 투자 발표 → 투자 집행
+- 채용 발표 → 실제 채용 결과
+- 행사 참가 → 행사 성과
+- 사업 발표 → 실제 사업 확장
+- 계약 체결 → 계약 이후 새로운 성과
+
+
+============================================================
+판단 기준
+============================================================
+
+오늘 기사에
+
+'새로운 발표'
+'새로운 결정'
+'새로운 수치'
+'새로운 성과'
+'새로운 제품/서비스 변화'
+'새로운 사업 진행 상황'
+
+등이 명확하게 존재하면
+기존 사건과 관련되어 있어도 살립니다.
+
+
+반대로
+
+제목만 바꾸었거나
+표현만 바꾸었거나
+기존 발표 내용을 다른 언론사가
+다시 작성한 수준이면
+
+중복으로 판단합니다.
+
+
+============================================================
+출력
+============================================================
+
+오늘 기사마다 다음을 출력하세요.
+
+- id
+- duplicate
+- matched_date
+- reason
+
+duplicate=true
+→ 기존 기사와 같은 사건이므로 제외
+
+duplicate=false
+→ 새로운 사건이므로 유지
+
+JSON만 출력하세요.
+
+
+[오늘 신규 스마일게이트 기사]
+
+{json.dumps(article_payload, ensure_ascii=False)}
+
+
+[과거 저장된 스마일게이트 기사]
+
+{json.dumps(history_payload, ensure_ascii=False)}
+
+
+[JSON 형식]
+
+{{
+  "articles": [
+    {{
+      "id": 1,
+      "duplicate": true,
+      "matched_date": "2026-08-18 14:30",
+      "reason": "전날 보도된 동일한 글로벌 출시 발표를 다시 다룬 기사"
+    }},
+    {{
+      "id": 2,
+      "duplicate": false,
+      "matched_date": null,
+      "reason": "기존 출시 기사와 달리 새로운 업데이트 내용을 다룸"
+    }}
+  ]
+}}
+""".strip()
+
+    data = call_gemini_json(
+        prompt,
+        temperature=0.0
+    )
+
+    # Gemini 실패 시 기존 기사를 함부로 제외하지 않음
+    if data is None:
+        return articles
+
+    result_items = data.get(
+        "articles",
+        []
+    )
+
+    if not isinstance(
+        result_items,
+        list
+    ):
+        return articles
+
+    result_by_id = {}
+
+    for result in result_items:
+
+        if not isinstance(
+            result,
+            dict
+        ):
+            continue
+
+        try:
+            article_id = int(
+                result.get("id")
+            )
+        except (
+            TypeError,
+            ValueError
+        ):
+            continue
+
+        result_by_id[
+            article_id
+        ] = result
+
+    filtered_smilegate = []
+
+    for article in smilegate_articles:
+
+        result = result_by_id.get(
+            article["id"]
+        )
+
+        if result is None:
+            # 판단 결과가 없으면 안전하게 유지
+            filtered_smilegate.append(
+                article
+            )
+            continue
+
+        duplicate = parse_bool(
+            result.get(
+                "duplicate",
+                False
+            )
+        )
+
+        if duplicate:
+
+            matched_date = result.get(
+                "matched_date"
+            )
+
+            reason = str(
+                result.get(
+                    "reason",
+                    ""
+                )
+            ).strip()
+
+            print(
+                "   🚫 스마일게이트 과거기사 중복 제외: "
+                f"{article['title'][:60]}"
+            )
+
+            print(
+                f"      └ 기존 기사: "
+                f"{matched_date}"
+            )
+
+            print(
+                f"      └ 사유: {reason}"
+            )
+
+            continue
+
+        filtered_smilegate.append(
+            article
+        )
+
+    return (
+        other_articles
+        + filtered_smilegate
     )
 
     # --------------------------------------------------------
