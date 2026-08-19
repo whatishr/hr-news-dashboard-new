@@ -2,7 +2,7 @@ name: Daily HR News Collector
 
 on:
   schedule:
-    - cron: '0 5 * * *'
+    - cron: '45 4 * * *'
   workflow_dispatch:
 
 permissions:
