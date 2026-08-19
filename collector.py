@@ -4085,11 +4085,11 @@ def run_collection() -> bool:
     # 동일 사건이면 오늘 기사를 제외합니다.
     # --------------------------------------------------------
 
-    def exclude_smilegate_duplicates_with_history(
-        articles: List[Dict[str, Any]]
-    ) -> List[Dict[str, Any]]:
+def exclude_smilegate_duplicates_with_history(
+    articles: List[Dict[str, Any]]
+) -> List[Dict[str, Any]]:
 
-        smilegate_articles = [
+    smilegate_articles = [
         article
         for article in articles
         if article.get("category")
