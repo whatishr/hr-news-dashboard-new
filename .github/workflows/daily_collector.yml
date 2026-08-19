@@ -43,6 +43,9 @@ jobs:
 
           git add hr_news.csv collector_status.json
 
-          git diff --cached --quiet || git commit -m "Auto: 매일 HR 뉴스 갱신"
-
-          git push origin main
+          if git diff --cached --quiet; then
+            echo "변경된 뉴스 데이터가 없습니다."
+          else
+            git commit -m "Auto: 매일 HR 뉴스 갱신"
+            git push origin main
+          fi
