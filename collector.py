@@ -3264,8 +3264,67 @@ def deduplicate_classified_articles(
 def select_category_candidates(
     articles: List[Dict[str, Any]],
     category: str,
-    limit: int
+    limit: int,
+    existing_topics: Set[str] | None = None
 ) -> List[Dict[str, Any]]:
+
+    category_articles = [
+        article
+        for article in articles
+        if article.get(
+            "category"
+        ) == category
+    ]
+
+    category_articles.sort(
+        key=article_rank_score,
+        reverse=True
+    )
+
+    selected = []
+
+    used_topics: Set[str] = set(
+        existing_topics or set()
+    )
+
+    for article in category_articles:
+
+        if len(selected) >= limit:
+            break
+
+        topic = str(
+            article.get(
+                "topic",
+                ""
+            )
+        ).strip().lower()
+
+        if not topic:
+            topic = (
+                f"article_{article['id']}"
+            )
+
+        # 기존 기사 또는 오늘 이미 선택된 기사와
+        # 같은 topic이면 제외
+        if topic in used_topics:
+            continue
+
+        selected.append(
+            article
+        )
+
+        used_topics.add(
+            topic
+        )
+
+    selected.sort(
+        key=lambda article: (
+            article["pub_dt"]
+        ),
+        reverse=True
+    )
+
+    return selected
 
     category_articles = [
         article
@@ -4026,16 +4085,11 @@ def run_collection() -> bool:
     # 동일 사건이면 오늘 기사를 제외합니다.
     # --------------------------------------------------------
 
-    duplicate_reviewed = (
-        exclude_smilegate_duplicates_with_history(
-            duplicate_reviewed
-        )
-    )
     def exclude_smilegate_duplicates_with_history(
-    articles: List[Dict[str, Any]]
-) -> List[Dict[str, Any]]:
+        articles: List[Dict[str, Any]]
+    ) -> List[Dict[str, Any]]:
 
-    smilegate_articles = [
+        smilegate_articles = [
         article
         for article in articles
         if article.get("category")
@@ -4408,17 +4462,30 @@ JSON만 출력하세요.
             else NORMAL_CATEGORY_DAILY_LIMIT
         )
 
-        selected = (
-            select_category_candidates(
-                deduplicated,
-                category,
-                limit
-            )
+        selected = select_category_candidates(
+            articles,
+            category,
+            limit,
+            existing_topics
         )
 
         selected_by_category[
             category
         ] = selected
+
+        for article in selected:
+
+            topic = str(
+                article.get(
+                    "topic",
+                    ""
+                )
+            ).strip().lower()
+
+            if topic:
+                existing_topics.add(
+                    topic
+                )
 
         print(
             f"🎯 [{category}] "
