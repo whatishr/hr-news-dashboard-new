@@ -77,11 +77,6 @@ GEMINI_API_KEY = (
     or ""
 ).strip()
 
-GEMINI_API_KEY = (
-    os.getenv("GEMINI_API_KEY")
-    or ""
-).strip()
-
 # [추가] 글자 수와 존재 여부를 출력하여 비밀 키가 정상 주입되었는지 검증합니다.
 print(f"[DEBUG] GEMINI_API_KEY 정상 로드 여부: {bool(GEMINI_API_KEY)} (글자수: {len(GEMINI_API_KEY)})")
 
