@@ -844,10 +844,15 @@ def fetch_article_page(
         if response.status_code != 200:
             return "", ""
 
-        response.encoding = (
-            response.apparent_encoding
-            or response.encoding
-        )
+        content_type = response.headers.get("Content-Type", "").lower()
+
+        if "charset=euc-kr" in content_type or "charset=ks_c_5601-1987" in content_type:
+            response.encoding = "euc-kr"
+        elif "charset=utf-8" in content_type:
+            response.encoding = "utf-8"
+        else:
+            # 대부분의 최신 국내 뉴스 사이트는 UTF-8
+            response.encoding = "utf-8"
 
         page_html = response.text
 
