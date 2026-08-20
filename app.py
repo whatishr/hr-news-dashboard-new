@@ -40,11 +40,11 @@ st.markdown(
 <style>
     /* Streamlit 기본 상단 여백 축소 */
     .block-container {
-        max-width: 1480px;
-        padding-top: 2rem !important;
+        max-width: 1380px;
+        padding-top: 1.2rem !important;
         padding-bottom: 3rem !important;
-        padding-left: 2rem !important;
-        padding-right: 2rem !important;
+        padding-left: 1.5rem !important;
+        padding-right: 1.5rem !important;
     }
 
     .main {
@@ -154,6 +154,39 @@ st.markdown(
         border-top: 1px solid #344056;
     }
 
+        /* ============================================
+       HR 영향도 / 관련 토픽
+       ============================================ */
+
+    .hr-impact-line {
+        padding: 0 10px 7px 10px;
+        font-size: 10px;
+        line-height: 1.3;
+        color: #64748b;
+        font-weight: 500;
+    }
+
+    .hr-impact-topic {
+        color: #475569;
+        font-weight: 600;
+    }
+
+    .hr-impact-high {
+        color: #dc2626;
+        font-weight: 700;
+    }
+
+    .hr-impact-medium {
+        color: #d97706;
+        font-weight: 700;
+    }
+
+    .hr-impact-low {
+        color: #94a3b8;
+        font-weight: 600;
+    }
+
+
     /* ============================================
        일반 뉴스 카드
        ============================================ */
@@ -162,7 +195,7 @@ st.markdown(
         background-color: #ffffff;
         border: 1px solid #e2e8f0;
         border-radius: 7px;
-        margin-bottom: 8px;
+        margin-bottom: 10px;
         overflow: hidden;
         box-shadow: 0 1px 2px rgba(15, 23, 42, 0.02);
         transition:
@@ -176,9 +209,9 @@ st.markdown(
     }
 
     .card-header {
-        min-height: 32px;
-        padding: 6px 10px;
-        font-size: 12px;
+        min-height: 36px;
+        padding: 7px 10px;
+        font-size: 13px;
         font-weight: 600;
         color: #1e293b;
         display: flex;
@@ -216,6 +249,8 @@ st.markdown(
         padding: 10px;
         border-top: 1px solid #e2e8f0;
     }
+
+    
 
     /* ============================================
        카드 상세 내용
@@ -295,13 +330,57 @@ st.markdown(
     .btn-link:hover {
         background-color: #1e293b;
     }
+        /* ============================================
+       필터 영역
+       ============================================ */
 
+    .filter-container {
+        background-color: #ffffff;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        padding: 14px 16px 10px 16px;
+        margin-top: 18px;
+        margin-bottom: 18px;
+        box-shadow: 0 1px 3px rgba(15, 23, 42, 0.03);
+    }
+
+    .filter-title {
+        font-size: 13px;
+        font-weight: 700;
+        color: #1e293b;
+        margin-bottom: 8px;
+    }
+
+    .result-count {
+        font-size: 13px;
+        color: #475569;
+        margin: 8px 0 14px 0;
+        font-weight: 500;
+    }
+        .dashboard-summary {
+        font-size: 12px;
+        color: #64748b;
+        margin: 2px 0 16px 0;
+        line-height: 1.5;
+        font-weight: 500;
+    }
+
+    .summary-divider {
+        color: #cbd5e1;
+        margin: 0 7px;
+    }
+
+    .result-count strong {
+        color: #1e293b;
+        font-weight: 700;
+    }
+    
     /* ============================================
        섹션
        ============================================ */
 
     .sec-header {
-        font-size: 14px;
+        font-size: 15px;
         font-weight: 700;
         color: #1e293b;
         margin-top: 18px;
@@ -316,7 +395,7 @@ st.markdown(
 
     .sec-marker {
         width: 4px;
-        height: 16px;
+        height: 18px;
         border-radius: 3px;
         background-color: #475569;
         display: inline-block;
@@ -387,12 +466,450 @@ st.markdown(
             padding-right: 1rem !important;
         }
     }
+
+/* ============================================================
+   사이드바
+   ============================================================ */
+
+/* ============================================================
+   사이드바 전체 배경 - 강제 적용
+   ============================================================ */
+
+/* 사이드바 최외곽 */
+section[data-testid="stSidebar"] {
+    background: #1b2230 !important;
+    background-color: #1b2230 !important;
+}
+
+/* Streamlit 사이드바 내부 모든 주요 wrapper */
+section[data-testid="stSidebar"] > div,
+section[data-testid="stSidebar"] > div:first-child,
+section[data-testid="stSidebar"] div[data-testid="stSidebarContent"],
+section[data-testid="stSidebar"] div[data-testid="stSidebarUserContent"] {
+    background: #1b2230 !important;
+    background-color: #1b2230 !important;
+}
+
+/* 사이드바 내부 기본 block 영역 */
+section[data-testid="stSidebar"] [data-testid="stVerticalBlock"],
+section[data-testid="stSidebar"] [data-testid="stVerticalBlockBorderWrapper"] {
+    background-color: transparent !important;
+}
+
+/* 사이드바 안쪽 여백 */
+section[data-testid="stSidebar"] > div:first-child {
+    padding-top: 0 !important;
+}
+
+/* 실제 사용자 콘텐츠 영역 */
+section[data-testid="stSidebar"] div[data-testid="stSidebarUserContent"] {
+    background-color: #1b2230 !important;
+}
+
+/* 사이드바 내부 일반 텍스트 */
+section[data-testid="stSidebar"],
+section[data-testid="stSidebar"] p,
+section[data-testid="stSidebar"] span,
+section[data-testid="stSidebar"] label {
+    color: #f8fafc;
+}
+/* ============================================================
+   사이드바 접기 버튼 - 강제 강조
+   ============================================================ */
+
+/* 접기 버튼 자체 */
+button[data-testid="stSidebarCollapseButton"] {
+    background-color: #475569 !important;
+    border: 2px solid #94a3b8 !important;
+    border-radius: 6px !important;
+
+    width: 32px !important;
+    height: 32px !important;
+    min-width: 32px !important;
+    min-height: 32px !important;
+
+    padding: 0 !important;
+    margin: 6px !important;
+
+    opacity: 1 !important;
+
+    box-shadow:
+        0 2px 6px rgba(0, 0, 0, 0.35) !important;
+}
+
+/* 아이콘 */
+button[data-testid="stSidebarCollapseButton"] svg {
+    color: #ffffff !important;
+    fill: #ffffff !important;
+    stroke: #ffffff !important;
+
+    width: 18px !important;
+    height: 18px !important;
+}
+
+/* 마우스 올렸을 때 */
+button[data-testid="stSidebarCollapseButton"]:hover {
+    background-color: #64748b !important;
+    border-color: #cbd5e1 !important;
+}
+
+/* 아이콘을 감싸는 요소까지 강제 */
+button[data-testid="stSidebarCollapseButton"] > div {
+    background-color: transparent !important;
+}
+
+/* 버튼이 있는 상단 영역 */
+section[data-testid="stSidebar"] > div:first-child {
+    position: relative !important;
+}
+/* ------------------------------------------------------------
+   사이드바 제목
+   ------------------------------------------------------------ */
+
+section[data-testid="stSidebar"] .sidebar-title {
+    font-size: 15px !important;
+    font-weight: 700 !important;
+    color: #f8fafc !important;
+    line-height: 1.3 !important;
+    margin: 0 0 3px 0 !important;
+    padding: 0 !important;
+}
+
+section[data-testid="stSidebar"] .sidebar-subtitle {
+    font-size: 12px !important;
+    font-weight: 400 !important;
+    color: #aeb8c8 !important;
+    line-height: 1.5 !important;
+    margin: 0 0 14px 0 !important;
+    padding: 0 !important;
+}
+
+/* ------------------------------------------------------------
+   사이드바 섹션 제목
+   ------------------------------------------------------------ */
+
+section[data-testid="stSidebar"] h3 {
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    color: #f8fafc !important;
+    line-height: 1.25 !important;
+    margin-top: 9px !important;
+    margin-bottom: 5px !important;
+    padding: 0 !important;
+}
+
+section[data-testid="stSidebar"] h4 {
+    font-size: 12px !important;
+    font-weight: 700 !important;
+    color: #f8fafc !important;
+    line-height: 1.35 !important;
+    margin-top: 10px !important;
+    margin-bottom: 7px !important;
+    padding: 0 !important;
+}
+
+/* ------------------------------------------------------------
+   사이드바 설명 문구
+   ------------------------------------------------------------ */
+
+section[data-testid="stSidebar"] [data-testid="stCaptionContainer"] {
+    font-size: 11px !important;
+    color: #aeb8c8 !important;
+    line-height: 1.55 !important;
+    margin-top: 0 !important;
+    margin-bottom: 8px !important;
+}
+
+section[data-testid="stSidebar"] [data-testid="stCaptionContainer"] p {
+    font-size: 11px !important;
+    color: #aeb8c8 !important;
+    line-height: 1.55 !important;
+    margin: 0 !important;
+}
+
+/* ------------------------------------------------------------
+   검색창
+   ------------------------------------------------------------ */
+
+/* 검색창 전체 박스 */
+section[data-testid="stSidebar"] div[data-testid="stTextInput"] {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+/* 검색창 바깥 테두리/컨테이너 */
+section[data-testid="stSidebar"] div[data-testid="stTextInput"] > div {
+    min-height: 30px !important;
+    height: 30px !important;
+}
+
+/* 실제 입력 박스 */
+section[data-testid="stSidebar"] div[data-testid="stTextInput"] div[data-baseweb="base-input"] {
+    min-height: 30px !important;
+    height: 30px !important;
+    border-radius: 5px !important;
+}
+
+/* input */
+section[data-testid="stSidebar"] div[data-testid="stTextInput"] input {
+    height: 30px !important;
+    min-height: 30px !important;
+    padding: 4px 9px !important;
+    font-size: 11px !important;
+    line-height: 1.2 !important;
+    color: #1e293b !important;
+    box-sizing: border-box !important;
+}
+
+/* placeholder */
+section[data-testid="stSidebar"] div[data-testid="stTextInput"] input::placeholder {
+    color: #9ca3af !important;
+    opacity: 1 !important;
+    font-size: 11px !important;
+}
+
+/* ------------------------------------------------------------
+   Selectbox / Multiselect
+   ------------------------------------------------------------ */
+
+/* 위젯 전체 */
+section[data-testid="stSidebar"] div[data-testid="stSelectbox"],
+section[data-testid="stSidebar"] div[data-testid="stMultiSelect"] {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+/* 셀렉박스 전체 외곽 */
+section[data-testid="stSidebar"] div[data-testid="stSelectbox"] div[data-baseweb="select"],
+section[data-testid="stSidebar"] div[data-testid="stMultiSelect"] div[data-baseweb="select"] {
+    min-height: 30px !important;
+    height: 30px !important;
+    font-size: 11px !important;
+}
+
+/* 실제 흰색 박스 */
+section[data-testid="stSidebar"] div[data-testid="stSelectbox"] div[data-baseweb="select"] > div,
+section[data-testid="stSidebar"] div[data-testid="stMultiSelect"] div[data-baseweb="select"] > div {
+    min-height: 30px !important;
+    height: 30px !important;
+    background-color: #ffffff !important;
+    border-radius: 5px !important;
+    border: none !important;
+    box-sizing: border-box !important;
+}
+
+/* 값이 표시되는 영역 */
+section[data-testid="stSidebar"] div[data-baseweb="select"] div[class*="ValueContainer"] {
+    min-height: 30px !important;
+    height: 30px !important;
+    padding: 0 9px !important;
+    display: flex !important;
+    align-items: center !important;
+    box-sizing: border-box !important;
+}
+
+/* 선택된 값 */
+section[data-testid="stSidebar"] div[data-baseweb="select"] div[class*="singleValue"] {
+    font-size: 11px !important;
+    line-height: 1.2 !important;
+    color: #1e293b !important;
+    font-weight: 400 !important;
+}
+
+/* ------------------------------------------------------------
+   Selectbox 실제 표시 텍스트 강제 축소
+   ------------------------------------------------------------ */
+
+section[data-testid="stSidebar"] div[data-testid="stSelectbox"]
+div[data-baseweb="select"] div[class*="singleValue"],
+section[data-testid="stSidebar"] div[data-testid="stSelectbox"]
+div[data-baseweb="select"] div[class*="singleValue"] span {
+    font-size: 10px !important;
+    line-height: 1.2 !important;
+    color: #1e293b !important;
+    font-weight: 400 !important;
+}
+
+/* Selectbox 내부 모든 텍스트 */
+section[data-testid="stSidebar"] div[data-testid="stSelectbox"]
+div[data-baseweb="select"] span {
+    font-size: 10px !important;
+    line-height: 1.2 !important;
+}
+
+/* Multiselect 선택값 */
+section[data-testid="stSidebar"] div[data-testid="stMultiSelect"]
+div[data-baseweb="select"] span {
+    font-size: 10px !important;
+    line-height: 1.2 !important;
+}
+
+/* 드롭다운 목록 */
+section[data-testid="stSidebar"] div[data-baseweb="popover"]
+div[role="option"],
+section[data-testid="stSidebar"] div[data-baseweb="popover"]
+div[role="option"] span {
+    font-size: 10px !important;
+    line-height: 1.2 !important;
+}
+
+/* Multiselect의 선택값 */
+section[data-testid="stSidebar"] div[data-baseweb="select"] [data-baseweb="tag"],
+section[data-testid="stSidebar"] div[data-baseweb="select"] [data-baseweb="tag"] span {
+    font-size: 11px !important;
+    line-height: 1.2 !important;
+    color: #1e293b !important;
+    font-weight: 400 !important;
+}
+
+/* "토픽 선택" placeholder */
+section[data-testid="stSidebar"] div[data-testid="stMultiSelect"] div[data-baseweb="select"] input {
+    font-size: 11px !important;
+    color: #1e293b !important;
+}
+
+section[data-testid="stSidebar"] div[data-testid="stMultiSelect"] div[data-baseweb="select"] input::placeholder {
+    font-size: 11px !important;
+    color: #9ca3af !important;
+    opacity: 1 !important;
+}
+
+/* selectbox 내부 input */
+section[data-testid="stSidebar"] div[data-testid="stSelectbox"] div[data-baseweb="select"] input {
+    font-size: 11px !important;
+    color: #1e293b !important;
+}
+
+/* 오른쪽 화살표 영역 */
+section[data-testid="stSidebar"] div[data-baseweb="select"] div[class*="IndicatorsContainer"] {
+    height: 30px !important;
+    min-height: 30px !important;
+}
+
+/* 드롭다운 목록 */
+section[data-testid="stSidebar"] div[data-baseweb="popover"] div[role="option"] {
+    font-size: 11px !important;
+    color: #1e293b !important;
+}
+
+section[data-testid="stSidebar"] div[data-baseweb="popover"] div[role="option"] span {
+    font-size: 11px !important;
+    color: #1e293b !important;
+}
+
+/* ------------------------------------------------------------
+   구분선
+   ------------------------------------------------------------ */
+
+section[data-testid="stSidebar"] hr {
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
+    border: none !important;
+    border-top: 1px solid #465166 !important;
+}
+
+
+/* ------------------------------------------------------------
+   검색 결과
+   ------------------------------------------------------------ */
+
+section[data-testid="stSidebar"] .filter-result {
+    margin-top: 5px !important;
+    margin-bottom: 4px !important;
+    font-size: 11px !important;
+    line-height: 1.4 !important;
+    color: #94a3b8 !important;
+}
+
+section[data-testid="stSidebar"] .filter-result strong {
+    color: #f8fafc !important;
+    font-weight: 700 !important;
+}
+
+/* ------------------------------------------------------------
+   통계
+   ------------------------------------------------------------ */
+
+section[data-testid="stSidebar"] .sidebar-summary {
+    display: flex !important;
+    gap: 6px !important;
+    margin-top: 8px !important;
+    margin-bottom: 0 !important;
+}
+
+section[data-testid="stSidebar"] .sidebar-stat {
+    flex: 1 !important;
+    background-color: #242d3f !important;
+    border: 1px solid #303b50 !important;
+    border-radius: 6px !important;
+    padding: 9px 6px 8px 6px !important;
+    text-align: center !important;
+}
+
+section[data-testid="stSidebar"] .sidebar-stat-number {
+    font-size: 17px !important;
+    font-weight: 700 !important;
+    color: #ffffff !important;
+    line-height: 1.2 !important;
+    margin-bottom: 3px !important;
+}
+
+section[data-testid="stSidebar"] .sidebar-stat-label {
+    font-size: 9px !important;
+    font-weight: 700 !important;
+    color: #94a3b8 !important;
+    letter-spacing: 0.4px !important;
+    line-height: 1.2 !important;
+}
+
+/* ------------------------------------------------------------
+   HR 이슈 토픽 칩
+   ------------------------------------------------------------ */
+
+section[data-testid="stSidebar"] .topic-chip-label {
+    font-size: 11px !important;
+    color: #aeb8c8 !important;
+    margin-bottom: 6px !important;
+}
+
+section[data-testid="stSidebar"] div[data-testid="stButton"] {
+    margin-bottom: 3px !important;
+}
+
+section[data-testid="stSidebar"] div[data-testid="stButton"] > button {
+    min-height: 28px !important;
+    height: 28px !important;
+    padding: 2px 8px !important;
+    font-size: 10px !important;
+    font-weight: 500 !important;
+    border-radius: 14px !important;
+    border: 1px solid #465166 !important;
+    background-color: #242d3f !important;
+    color: #d6deea !important;
+    white-space: nowrap !important;
+}
+
+/* HR 이슈 토픽 버튼 내부 글씨 */
+section[data-testid="stSidebar"]
+div[data-testid="stButton"] > button,
+section[data-testid="stSidebar"]
+div[data-testid="stButton"] > button p,
+section[data-testid="stSidebar"]
+div[data-testid="stButton"] > button span {
+    font-size: 10px !important;
+    line-height: 1.1 !important;
+    font-weight: 500 !important;
+}
+
+section[data-testid="stSidebar"] div[data-testid="stButton"] > button:hover {
+    border-color: #60a5fa !important;
+    color: #ffffff !important;
+    background-color: #303b50 !important;
+}
 </style>
 """,
     unsafe_allow_html=True
 )
-
-
 # ============================================================
 # 데이터 로딩
 # ============================================================
@@ -453,7 +970,10 @@ def load_data(
         "summary",
         "checkpoints",
         "link",
-        "pubDate"
+        "pubDate",
+        "hr_relevance",
+        "practical_value",
+        "topic"
     ]
 
     for column in required_columns:
@@ -484,7 +1004,274 @@ def load_data(
         drop=True
     )
 
+# ============================================================
+# HR 토픽 분류
+# ============================================================
 
+HR_TOPIC_KEYWORDS = {
+    "노동정책": [
+        # 노동법·정책 일반
+        "노동법",
+        "노동정책",
+        "고용정책",
+        "고용노동부",
+        "노동부",
+        "근로자성",
+        "부당해고",
+        "통상임금",
+        "노조법",
+        "산업안전",
+        "고용차별",
+        "노동위원회",
+        "법원 판결",
+        "대법",
+        "법원",
+        "판결",
+        "시행령",
+        "시행규칙",
+        "법안",
+        "개정안",
+        "입법",
+        "제정",
+        "시행",
+        "정책",
+        "제도 개편",
+
+        # 법·제도 변경 성격이 강한 육아/돌봄 정책
+        "단기 육아휴직",
+        "육아휴직 제도",
+        "육아휴직 확대",
+        "육아휴직 시행",
+        "육아휴직 개편",
+        "육아휴직 제도 변경",
+        "육아휴직 기간 확대",
+        "육아휴직 사용",
+        "가족돌봄 제도",
+        "가족돌봄 정책",
+    ],
+
+    "근로시간": [
+        "근로시간",
+        "근무시간",
+        "출퇴근",
+        "시차출퇴근",
+        "유연근무",
+        "주4일제",
+        "주 4일제",
+        "근무시간",
+        "근로시간제",
+    ],
+
+    "휴가·휴직": [
+        "육아휴직",
+        "출산휴가",
+        "연차",
+        "휴가",
+        "휴직",
+        "가족돌봄휴가",
+        "육아지원",
+    ],
+
+    "보상·임금": [
+        "임금",
+        "급여",
+        "연봉",
+        "성과급",
+        "상여금",
+        "임금인상",
+        "보수",
+        "보상",
+        "복리후생",
+        "복지",
+        "처우",
+    ],
+
+    "노사관계": [
+        "노조",
+        "노동조합",
+        "노조원",
+        "단체교섭",
+        "노사협의",
+        "노사관계",
+        "임단협",
+        "임금협상",
+        "파업",
+        "쟁의",
+        "노사갈등",
+        "고용보장",
+    ],
+
+    "채용": [
+        "채용",
+        "채용공고",
+        "신입사원",
+        "신입채용",
+        "경력채용",
+        "경력직",
+        "인재채용",
+        "채용시장",
+        "채용전형",
+        "채용평가",
+        "채용방식",
+        "온보딩",
+    ],
+
+    "인력변화": [
+        "희망퇴직",
+        "명예퇴직",
+        "퇴직",
+        "퇴사",
+        "구조조정",
+        "인력감축",
+        "인력재배치",
+        "인력 이동",
+        "직무전환",
+        "인력조정",
+        "대규모 해고",
+        "정리해고",
+        "감원",
+        "조직 간 이동",
+        "리스킬링",
+    ],
+
+    "평가·인사제도": [
+        "인사평가",
+        "성과평가",
+        "평가제도",
+        "성과관리",
+        "승진",
+        "승진제도",
+        "직급",
+        "직급제도",
+        "인사제도",
+        "인사관리",
+        "인사정책",
+        "HRM",
+    ],
+
+    "조직·근무제도": [
+        "조직문화",
+        "기업문화",
+        "조직개편",
+        "조직운영",
+        "조직설계",
+        "근무제도",
+        "재택근무",
+        "출근정책",
+        "일하는 방식",
+        "근무방식",
+    ],
+
+}
+
+def get_related_topics(
+    row: pd.Series,
+    max_topics: int = 3
+) -> list[str]:
+
+    title = str(
+        row.get("title", "")
+    ).strip()
+
+    summary = str(
+        row.get("summary", "")
+    ).strip()
+
+    # ========================================================
+    # summary를 중심으로 토픽 판단
+    # 제목은 보조 정보로만 사용
+    # ========================================================
+
+    search_text = summary.lower()
+
+    title_text = title.lower()
+
+    # ========================================================
+    # 정책·법률 성격이 강한 표현 우선 처리
+    # ========================================================
+
+    policy_priority_keywords = [
+        "노동법 개정",
+        "노동법안",
+        "노동정책",
+        "고용정책",
+        "고용노동부",
+        "노조법",
+        "법안 발의",
+        "법안",
+        "개정안",
+        "입법",
+        "시행령",
+        "시행규칙",
+        "제도 개편",
+        "제도 변경",
+        "정책 변경",
+        "법원 판결",
+        "대법원",
+        "대법",
+        "판결",
+        "노동위원회",
+        "중노위",
+        "지노위",
+    ]
+
+    for keyword in policy_priority_keywords:
+
+        if keyword.lower() in search_text:
+
+            return ["노동정책"]
+
+    # ========================================================
+    # 토픽별 키워드 점수 계산
+    #
+    # summary에 등장하면 높은 점수
+    # title에만 등장하면 낮은 점수
+    # ========================================================
+
+    topic_scores = {}
+
+    for topic, keywords in HR_TOPIC_KEYWORDS.items():
+
+        score = 0
+
+        for keyword in keywords:
+
+            keyword_lower = keyword.lower()
+
+            # summary는 핵심 판단 기준
+            if keyword_lower in search_text:
+                score += 3
+
+            # 제목은 보조 판단
+            elif keyword_lower in title_text:
+                score += 1
+
+        if score > 0:
+            topic_scores[topic] = score
+
+    # ========================================================
+    # 점수가 높은 토픽 순으로 정렬
+    # ========================================================
+
+    if topic_scores:
+
+        sorted_topics = sorted(
+            topic_scores.items(),
+            key=lambda item: item[1],
+            reverse=True
+        )
+
+        return [
+            topic
+            for topic, score
+            in sorted_topics[:max_topics]
+        ]
+
+    # ========================================================
+    # 아무 토픽도 매칭되지 않는 경우
+    # ========================================================
+
+    return ["트렌드 · 타사 사례"]
 # ============================================================
 # 데이터 안전 처리
 # ============================================================
@@ -683,12 +1470,31 @@ def build_card_html(
     row: pd.Series,
     is_sg: bool = False
 ) -> str:
+
     checkpoints = parse_checkpoints(
         row.get(
             "checkpoints",
             ""
         )
     )
+
+    # --------------------------------------------------------
+    # HR 영향도 / 관련 토픽 표시
+    # --------------------------------------------------------
+
+    related_topics = get_related_topics(
+        row,
+        max_topics=3
+    )
+
+    topic_text = " · ".join(
+        related_topics
+    )
+
+
+    # --------------------------------------------------------
+    # 체크포인트
+    # --------------------------------------------------------
 
     checkpoint_items = "".join(
         (
@@ -706,6 +1512,10 @@ def build_card_html(
             "</div>"
         )
 
+    # --------------------------------------------------------
+    # 요약
+    # --------------------------------------------------------
+
     summary = safe_multiline_text(
         row.get(
             "summary",
@@ -713,6 +1523,10 @@ def build_card_html(
         ),
         "요약 정보가 없습니다."
     )
+
+    # --------------------------------------------------------
+    # 제목
+    # --------------------------------------------------------
 
     raw_title = str(
         row.get(
@@ -739,12 +1553,20 @@ def build_card_html(
         "제목 없음"
     )
 
+    # --------------------------------------------------------
+    # 날짜
+    # --------------------------------------------------------
+
     date_str = safe_text(
         row.get(
             "date_str",
             ""
         )
     )
+
+    # --------------------------------------------------------
+    # 링크
+    # --------------------------------------------------------
 
     link_html = build_link_html(
         row.get(
@@ -753,49 +1575,82 @@ def build_card_html(
         )
     )
 
+    # ========================================================
+    # 오늘의 스마일게이트
+    # ========================================================
+
     if is_sg:
+
         return (
             '<div class="sg-card">'
+
             '<div class="sg-card-header">'
             f'<span class="sg-date-tag">{date_str}</span>'
             f'<span class="sg-title-text" '
             f'title="{clean_title}">'
-            f"{clean_title}"
-            "</span>"
-            "</div>"
+            f'{clean_title}'
+            '</span>'
+            '</div>'
+
             '<div class="sg-card-body">'
+
             '<div class="summary-title-sg">'
-            "주요 요약"
-            "</div>"
-            f'<div class="summary-box-sg">{summary}</div>'
-            f"{link_html}"
-            "</div>"
-            "</div>"
+            '주요 요약'
+            '</div>'
+
+            f'<div class="summary-box-sg">'
+            f'{summary}'
+            '</div>'
+
+            f'{link_html}'
+
+            '</div>'
+            '</div>'
         )
+
+    # ========================================================
+    # 일반 뉴스 카드
+    # ========================================================
 
     return (
         '<div class="news-card">'
+
         '<div class="card-header">'
         f'<span class="date-tag">{date_str}</span>'
         f'<span class="card-title-text" '
         f'title="{clean_title}">'
-        f"{clean_title}"
-        "</span>"
-        "</div>"
+        f'{clean_title}'
+        '</span>'
+        '</div>'
+
+        '<div class="hr-impact-line">'
+        f'<span class="hr-impact-topic">'
+        f'{safe_text(topic_text)}'
+        f'</span>'
+        '</div>'
+
         '<div class="card-body">'
+
         '<div class="summary-title-normal">'
-        "핵심 요약"
-        "</div>"
-        f'<div class="summary-box">{summary}</div>'
+        '핵심 요약'
+        '</div>'
+
+        f'<div class="summary-box">'
+        f'{summary}'
+        '</div>'
+
         '<div class="checkpoint-title">'
-        "실무 체크포인트"
-        "</div>"
+        '실무 체크포인트'
+        '</div>'
+
         '<div class="checkpoint-box">'
-        f"{checkpoint_items}"
-        "</div>"
-        f"{link_html}"
-        "</div>"
-        "</div>"
+        f'{checkpoint_items}'
+        '</div>'
+
+        f'{link_html}'
+
+        '</div>'
+        '</div>'
     )
 
 
@@ -914,6 +1769,156 @@ if df.empty:
 
     st.stop()
 
+# ============================================================
+# 사이드바 필터
+# ============================================================
+
+with st.sidebar:
+
+    st.markdown(
+        '<div class="sidebar-title">📰 HR 뉴스 레이더</div>',
+        unsafe_allow_html=True
+    )
+
+    st.markdown(
+        '<div class="sidebar-subtitle">'
+        "HR에 영향을 주는 주요 이슈를 한눈에 살펴보세요."
+        "</div>",
+        unsafe_allow_html=True
+    )
+
+    st.markdown("### 🔎 검색")
+
+    search_keyword = st.text_input(
+        "기사 검색",
+        placeholder="제목, 요약, 주제 검색",
+        label_visibility="collapsed"
+    )
+
+    st.markdown("### 📌 HR 이슈")
+
+    st.markdown(
+        '<div class="topic-chip-label">'
+        "관심 있는 이슈를 눌러보세요."
+        "</div>",
+        unsafe_allow_html=True
+    )
+
+    if "selected_hr_topics" not in st.session_state:
+        st.session_state.selected_hr_topics = []
+
+    topic_names = list(HR_TOPIC_KEYWORDS.keys()) + [
+        "트렌드 · 타사 사례"
+    ]
+    topic_rows = [
+        topic_names[0:3],
+        topic_names[3:6],
+        topic_names[6:9],
+        topic_names[9:10],
+    ]
+
+    for topic_row in topic_rows:
+
+        cols = st.columns(len(topic_row))
+
+        for col, topic in zip(cols, topic_row):
+
+            with col:
+
+                is_selected = (
+                    topic
+                    in st.session_state.selected_hr_topics
+                )
+
+                button_label = (
+                    f"✓ {topic}"
+                    if is_selected
+                    else topic
+                )
+
+                if st.button(
+                    button_label,
+                    key=f"topic_{topic}",
+                    use_container_width=True
+                ):
+
+                    if topic in st.session_state.selected_hr_topics:
+                        st.session_state.selected_hr_topics.remove(topic)
+                    else:
+                        st.session_state.selected_hr_topics.append(topic)
+
+                    st.rerun()
+
+    selected_hr_topics = (
+        st.session_state.selected_hr_topics
+    )
+
+    st.markdown("### 📅 수집 기간")
+
+    period_options = [
+            "전체",
+            "7일",
+            "30일"
+    ]
+
+    selected_period = st.selectbox(
+        "수집 기간",
+        period_options,
+        index=0,
+        label_visibility="collapsed"
+    )
+
+    st.markdown("### ↕ 정렬")
+
+    sort_option = st.selectbox(
+        "정렬 기준",
+        [
+            "최신순",
+            "HR 실무 중요도순"
+        ],
+        index=0,
+        label_visibility="collapsed"
+    )
+
+    st.markdown("---")
+
+
+    total_count = len(df)
+
+    today_str = pd.Timestamp.now(
+        tz="Asia/Seoul"
+    ).strftime("%Y-%m-%d")
+
+    today_count = (
+        pd.to_datetime(
+            df["pubDate"],
+            errors="coerce"
+        )
+        .dt.strftime("%Y-%m-%d")
+        .eq(today_str)
+        .sum()
+    )
+
+
+
+    st.markdown(
+        (
+            '<div class="sidebar-summary">'
+
+            '<div class="sidebar-stat">'
+            f'<div class="sidebar-stat-number">{total_count}</div>'
+            '<div class="sidebar-stat-label">TOTAL</div>'
+            '</div>'
+
+            '<div class="sidebar-stat">'
+            f'<div class="sidebar-stat-number">{today_count}</div>'
+            '<div class="sidebar-stat-label">TODAY</div>'
+            '</div>'
+
+            '</div>'
+        ),
+        unsafe_allow_html=True
+    )
 
 # ============================================================
 # 오늘의 스마일게이트
@@ -964,6 +1969,243 @@ st.markdown(
 
 
 # ============================================================
+# 필터 적용
+# ============================================================
+
+filtered_df = df[
+    df["category"]
+    != "오늘의 스마일게이트"
+].copy()
+
+
+# ------------------------------------------------------------
+# 검색
+# ------------------------------------------------------------
+
+if search_keyword.strip():
+
+    keyword = (
+        search_keyword
+        .strip()
+        .lower()
+    )
+
+    search_columns = [
+        "title",
+        "summary",
+        "topic"
+    ]
+
+    search_mask = pd.Series(
+        False,
+        index=filtered_df.index
+    )
+
+    for column in search_columns:
+
+        if column in filtered_df.columns:
+
+            search_mask = (
+                search_mask
+                |
+                filtered_df[column]
+                .astype(str)
+                .str.lower()
+                .str.contains(
+                    keyword,
+                    regex=False,
+                    na=False
+                )
+            )
+
+    filtered_df = filtered_df[
+        search_mask
+    ]
+
+# ------------------------------------------------------------
+# HR 이슈 토픽 검색
+# ------------------------------------------------------------
+
+if selected_hr_topics:
+
+    topic_mask = filtered_df.apply(
+        lambda row: any(
+            selected_topic in get_related_topics(
+                row,
+                max_topics=3
+            )
+            for selected_topic
+            in selected_hr_topics
+        ),
+        axis=1
+    )
+
+    filtered_df = filtered_df[
+        topic_mask
+    ]
+
+# ------------------------------------------------------------
+# 기간
+# ------------------------------------------------------------
+
+pub_dates = pd.to_datetime(
+    filtered_df["pubDate"],
+    errors="coerce",
+    utc=True
+)
+
+now_kst = pd.Timestamp.now(
+    tz="Asia/Seoul"
+)
+
+if selected_period == "7일":
+
+    cutoff = (
+        now_kst.normalize()
+        - pd.Timedelta(days=6)
+    )
+
+    filtered_df = filtered_df[
+        pub_dates >= cutoff.tz_convert("UTC")
+    ]
+
+elif selected_period == "30일":
+
+    cutoff = (
+        now_kst.normalize()
+        - pd.Timedelta(days=29)
+    )
+
+    filtered_df = filtered_df[
+        pub_dates >= cutoff.tz_convert("UTC")
+    ]
+
+# ------------------------------------------------------------
+# 정렬
+# ------------------------------------------------------------
+
+if sort_option == "HR 실무 중요도순":
+
+    filtered_df["_sort_score"] = pd.to_numeric(
+        filtered_df["hr_relevance"],
+        errors="coerce"
+    ).fillna(0)
+
+    filtered_df["_sort_date"] = pd.to_datetime(
+        filtered_df["pubDate"],
+        errors="coerce",
+        utc=True
+    )
+
+    filtered_df = (
+        filtered_df
+        .sort_values(
+            by=[
+                "_sort_score",
+                "_sort_date"
+            ],
+            ascending=[
+                False,
+                False
+            ],
+            na_position="last"
+        )
+        .drop(
+            columns=[
+                "_sort_score",
+                "_sort_date"
+            ],
+            errors="ignore"
+        )
+    )
+
+else:
+
+    filtered_df["_sort_date"] = pd.to_datetime(
+        filtered_df["pubDate"],
+        errors="coerce",
+        utc=True
+    )
+
+    filtered_df = (
+        filtered_df
+        .sort_values(
+            by="_sort_date",
+            ascending=False,
+            na_position="last"
+        )
+        .drop(
+            columns=[
+                "_sort_date"
+            ],
+            errors="ignore"
+        )
+    )
+
+# ============================================================
+# 검색 결과 표시
+# ============================================================
+
+search_related_topics = set()
+
+if search_keyword.strip():
+
+    for _, row in filtered_df.iterrows():
+
+        related_topics = get_related_topics(row)
+
+        search_related_topics.update(
+            related_topics
+        )
+
+with st.sidebar:
+
+    result_text = (
+        f"{search_keyword.strip()} 검색 결과"
+        if search_keyword.strip()
+        else "현재 검색 결과"
+    )
+
+    st.markdown(
+        (
+            '<div class="filter-result">'
+            f"{result_text} "
+            f"<strong>{len(filtered_df)}건</strong>"
+            "</div>"
+        ),
+        unsafe_allow_html=True
+    )
+
+st.markdown(
+    (
+        '<div class="result-count">'
+        f"검색 결과 <strong>{len(filtered_df)}건</strong>"
+        "</div>"
+    ),
+    unsafe_allow_html=True
+)
+
+if search_keyword.strip() and search_related_topics:
+
+    related_topic_text = " · ".join(
+        sorted(search_related_topics)
+    )
+
+    st.markdown(
+        (
+            '<div class="dashboard-summary">'
+            f"<strong>{html.escape(search_keyword.strip())}</strong>"
+            " 관련 검색 결과 "
+            f"<strong>{len(filtered_df)}건</strong>"
+            '<span class="summary-divider">|</span>'
+            "관련 토픽: "
+            f"<strong>{html.escape(related_topic_text)}</strong>"
+            "</div>"
+        ),
+        unsafe_allow_html=True
+    )
+
+# ============================================================
 # 카테고리 배치
 # ============================================================
 
@@ -973,14 +2215,14 @@ row1_col1, row1_col2 = st.columns(
 
 with row1_col1:
     render_category_with_more(
-        df,
+        filtered_df,
         "HR 제도·조직운영",
         "HR 제도·조직운영"
     )
 
 with row1_col2:
     render_category_with_more(
-        df,
+        filtered_df,
         "노동법·정책·판례",
         "노동법·정책·판례"
     )
@@ -998,14 +2240,14 @@ row2_col1, row2_col2 = st.columns(
 
 with row2_col1:
     render_category_with_more(
-        df,
+        filtered_df,
         "보상·노사관계",
         "보상·노사관계"
     )
 
 with row2_col2:
     render_category_with_more(
-        df,
+        filtered_df,
         "채용·인력운영",
         "채용·인력운영"
     )
