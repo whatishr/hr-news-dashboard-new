@@ -682,16 +682,16 @@ section[data-testid="stSidebar"] div[data-testid="stMultiSelect"] {
 /* 셀렉박스 전체 외곽 */
 section[data-testid="stSidebar"] div[data-testid="stSelectbox"] div[data-baseweb="select"],
 section[data-testid="stSidebar"] div[data-testid="stMultiSelect"] div[data-baseweb="select"] {
-    min-height: 30px !important;
-    height: 30px !important;
+    min-height: 28px !important;
+    height: 28px !important;
     font-size: 11px !important;
 }
 
 /* 실제 흰색 박스 */
 section[data-testid="stSidebar"] div[data-testid="stSelectbox"] div[data-baseweb="select"] > div,
 section[data-testid="stSidebar"] div[data-testid="stMultiSelect"] div[data-baseweb="select"] > div {
-    min-height: 30px !important;
-    height: 30px !important;
+    min-height: 28px !important;
+    height: 28px !important;
     background-color: #ffffff !important;
     border-radius: 5px !important;
     border: none !important;
@@ -700,41 +700,28 @@ section[data-testid="stSidebar"] div[data-testid="stMultiSelect"] div[data-basew
 
 /* 값이 표시되는 영역 */
 section[data-testid="stSidebar"] div[data-baseweb="select"] div[class*="ValueContainer"] {
-    min-height: 30px !important;
-    height: 30px !important;
-    padding: 0 9px !important;
+    min-height: 28px !important;
+    height: 28px !important;
+    padding: 0 8px !important;
     display: flex !important;
     align-items: center !important;
     box-sizing: border-box !important;
 }
 
-/* 선택된 값 */
-section[data-testid="stSidebar"] div[data-baseweb="select"] div[class*="singleValue"] {
-    font-size: 11px !important;
-    line-height: 1.2 !important;
-    color: #1e293b !important;
-    font-weight: 400 !important;
-}
-
 /* ------------------------------------------------------------
-   Selectbox 실제 표시 텍스트 강제 축소
+   Selectbox 선택된 값 글씨
    ------------------------------------------------------------ */
 
 section[data-testid="stSidebar"] div[data-testid="stSelectbox"]
-div[data-baseweb="select"] div[class*="singleValue"],
+div[data-baseweb="select"]
+div[class*="singleValue"],
 section[data-testid="stSidebar"] div[data-testid="stSelectbox"]
-div[data-baseweb="select"] div[class*="singleValue"] span {
+div[data-baseweb="select"]
+div[class*="singleValue"] span {
     font-size: 10px !important;
     line-height: 1.2 !important;
     color: #1e293b !important;
     font-weight: 400 !important;
-}
-
-/* Selectbox 내부 모든 텍스트 */
-section[data-testid="stSidebar"] div[data-testid="stSelectbox"]
-div[data-baseweb="select"] span {
-    font-size: 10px !important;
-    line-height: 1.2 !important;
 }
 
 /* Multiselect 선택값 */
@@ -782,20 +769,10 @@ section[data-testid="stSidebar"] div[data-testid="stSelectbox"] div[data-baseweb
 
 /* 오른쪽 화살표 영역 */
 section[data-testid="stSidebar"] div[data-baseweb="select"] div[class*="IndicatorsContainer"] {
-    height: 30px !important;
-    min-height: 30px !important;
+    height: 28px !important;
+    min-height: 28px !important;
 }
 
-/* 드롭다운 목록 */
-section[data-testid="stSidebar"] div[data-baseweb="popover"] div[role="option"] {
-    font-size: 11px !important;
-    color: #1e293b !important;
-}
-
-section[data-testid="stSidebar"] div[data-baseweb="popover"] div[role="option"] span {
-    font-size: 11px !important;
-    color: #1e293b !important;
-}
 
 /* ------------------------------------------------------------
    구분선
@@ -973,7 +950,6 @@ def load_data(
         "pubDate",
         "hr_relevance",
         "practical_value",
-        "topic"
     ]
 
     for column in required_columns:
@@ -1009,59 +985,11 @@ def load_data(
 # ============================================================
 
 HR_TOPIC_KEYWORDS = {
-    "노동정책": [
-        # 노동법·정책 일반
-        "노동법",
-        "노동정책",
-        "고용정책",
-        "고용노동부",
-        "노동부",
-        "근로자성",
-        "부당해고",
-        "통상임금",
-        "노조법",
-        "산업안전",
-        "고용차별",
-        "노동위원회",
-        "법원 판결",
-        "대법",
-        "법원",
-        "판결",
-        "시행령",
-        "시행규칙",
-        "법안",
-        "개정안",
-        "입법",
-        "제정",
-        "시행",
-        "정책",
-        "제도 개편",
 
-        # 법·제도 변경 성격이 강한 육아/돌봄 정책
-        "단기 육아휴직",
-        "육아휴직 제도",
-        "육아휴직 확대",
-        "육아휴직 시행",
-        "육아휴직 개편",
-        "육아휴직 제도 변경",
-        "육아휴직 기간 확대",
-        "육아휴직 사용",
-        "가족돌봄 제도",
-        "가족돌봄 정책",
-    ],
 
-    "근로시간": [
-        "근로시간",
-        "근무시간",
-        "출퇴근",
-        "시차출퇴근",
-        "유연근무",
-        "주4일제",
-        "주 4일제",
-        "근무시간",
-        "근로시간제",
-    ],
-
+    # --------------------------------------------------------
+    # 휴가·휴직
+    # --------------------------------------------------------
     "휴가·휴직": [
         "육아휴직",
         "출산휴가",
@@ -1069,21 +997,204 @@ HR_TOPIC_KEYWORDS = {
         "휴가",
         "휴직",
         "가족돌봄휴가",
+        "가족돌봄",
         "육아지원",
     ],
+
+    # --------------------------------------------------------
+    # 보상·임금
+    # --------------------------------------------------------
+    "보상·임금": [
+        "임금",
+        "급여",
+        "연봉",
+        "성과급",
+        "성과보상",
+        "상여금",
+        "임금인상",
+        "보수",
+        "보상체계",
+        "성과보상제",
+        "임금체계",
+        "임금제도",
+        "복리후생",
+        "처우개선",
+
+        "퇴직금",
+        "퇴직급여",
+        "퇴직급여비용",
+        "퇴직비용",
+        "평균임금",
+        "임금성",
+        "임금에 해당",
+        "성과급의 임금성",
+        "근로의 대가",
+        "TAI",
+        "목표 인센티브",
+    ],
+
+    # --------------------------------------------------------
+    # 노사관계
+    # --------------------------------------------------------
+    "노사관계": [
+        "노조",
+        "노동조합",
+        "노조원",
+        "단체교섭",
+        "노사협의",
+        "노사관계",
+        "임단협",
+        "임금협상",
+        "파업",
+        "쟁의",
+        "노사갈등",
+    ],
+
+    # --------------------------------------------------------
+    # 채용
+    # --------------------------------------------------------
+    "채용": [
+        "채용",
+        "채용공고",
+        "신입사원",
+        "신입채용",
+        "경력채용",
+        "경력직",
+        "인재채용",
+        "채용시장",
+        "채용전형",
+        "채용평가",
+        "채용방식",
+    ],
+
+    # --------------------------------------------------------
+    # 인력변화
+    # --------------------------------------------------------
+        "인력변화": [
+        "희망퇴직",
+        "명예퇴직",
+        "정년",
+        "정년퇴직",
+        "계속고용",
+        "고용연장",
+        "구조조정",
+        "인력감축",
+        "인력재편",
+        "인력 재편",
+        "인력재배치",
+        "인력 이동",
+        "인력조정",
+        "직무전환",
+        "대규모 해고",
+        "정리해고",
+        "감원",
+        "리스킬링",
+        "업스킬링",
+    ],
+
+    # --------------------------------------------------------
+    # 평가·인사제도
+    # --------------------------------------------------------
+    "평가·인사제도": [
+        "인사평가",
+        "성과평가",
+        "평가제도",
+        "성과관리",
+        "성과관리제도",
+        "승진",
+        "승진제도",
+        "직급",
+        "직급제도",
+        "인사제도",
+        "인사관리",
+        "인사운영",
+        "인사정책",
+        "평가기준",
+        "평가 기준",
+        "성과 평가 기준",
+        "전보",
+        "부당전보",
+        "배치전환",
+        "인사이동",
+        "취업규칙",
+        "근로계약",
+        "징계제도",
+        "징계기준",
+        "징계절차",
+    ],
+
+    # --------------------------------------------------------
+    # 조직·근무제도
+    # --------------------------------------------------------
+    "조직·근무제도": [
+        "조직문화",
+        "기업문화",
+        "조직개편",
+        "조직운영",
+        "조직설계",
+
+        "근무제도",
+        "근무방식",
+        "일하는 방식",
+        "재택근무",
+        "출근정책",
+        "유연근무",
+        "시차출퇴근",
+
+        "근로시간",
+        "근무시간",
+        "근로시간제",
+        "주4일제",
+        "주 4일제",
+        "주4일 근무",
+        "근로시간 단축",
+        "근무시간 단축",
+
+        "ai 도입",
+        "ai 활용",
+        "ai 정책",
+        "인공지능 도입",
+        "인공지능 활용",
+        "인공지능 정책",
+    ],
+}
+
+
+# ============================================================
+# HR 세부 토픽 분류
+#
+# category = collector.py에서 결정한 대분류
+# topic    = app.py에서 title + summary를 기준으로 세부분류
+# ============================================================
+
+HR_TOPIC_KEYWORDS = {
 
     "보상·임금": [
         "임금",
         "급여",
         "연봉",
         "성과급",
+        "성과보상",
         "상여금",
         "임금인상",
         "보수",
-        "보상",
+        "보상체계",
+        "성과보상제",
+        "임금체계",
+        "임금제도",
         "복리후생",
-        "복지",
-        "처우",
+        "처우개선",
+        "퇴직금",
+        "퇴직급여",
+        "퇴직급여비용",
+        "퇴직비용",
+        "평균임금",
+        "임금성",
+        "임금에 해당",
+        "성과급의 임금성",
+        "근로의 대가",
+        "TAI",
+        "목표 인센티브",
     ],
 
     "노사관계": [
@@ -1097,8 +1208,9 @@ HR_TOPIC_KEYWORDS = {
         "임금협상",
         "파업",
         "쟁의",
+        "쟁의행위",
         "노사갈등",
-        "고용보장",
+        "노사협상",
     ],
 
     "채용": [
@@ -1119,19 +1231,24 @@ HR_TOPIC_KEYWORDS = {
     "인력변화": [
         "희망퇴직",
         "명예퇴직",
-        "퇴직",
-        "퇴사",
+        "정년",
+        "정년퇴직",
+        "계속고용",
+        "고용연장",
         "구조조정",
         "인력감축",
+        "인력재편",
+        "인력 재편",
         "인력재배치",
         "인력 이동",
-        "직무전환",
         "인력조정",
+        "직무전환",
         "대규모 해고",
         "정리해고",
         "감원",
-        "조직 간 이동",
+        "해고",
         "리스킬링",
+        "업스킬링",
     ],
 
     "평가·인사제도": [
@@ -1139,14 +1256,27 @@ HR_TOPIC_KEYWORDS = {
         "성과평가",
         "평가제도",
         "성과관리",
+        "성과관리제도",
         "승진",
         "승진제도",
         "직급",
         "직급제도",
         "인사제도",
         "인사관리",
+        "인사운영",
         "인사정책",
-        "HRM",
+        "평가기준",
+        "평가 기준",
+        "성과 평가 기준",
+        "전보",
+        "부당전보",
+        "배치전환",
+        "인사이동",
+        "취업규칙",
+        "근로계약",
+        "징계제도",
+        "징계기준",
+        "징계절차",
     ],
 
     "조직·근무제도": [
@@ -1156,13 +1286,80 @@ HR_TOPIC_KEYWORDS = {
         "조직운영",
         "조직설계",
         "근무제도",
+        "근무방식",
+        "일하는 방식",
         "재택근무",
         "출근정책",
-        "일하는 방식",
-        "근무방식",
+        "유연근무",
+        "시차출퇴근",
+        "근로시간",
+        "근무시간",
+        "근로시간제",
+        "주4일제",
+        "주 4일제",
+        "주4일 근무",
+        "근로시간 단축",
+        "근무시간 단축",
+        "AI 도입",
+        "AI 활용",
+        "AI 정책",
+        "인공지능 도입",
+        "인공지능 활용",
+        "인공지능 정책",
     ],
 
+    "휴가·휴직": [
+        "육아휴직",
+        "출산휴가",
+        "연차",
+        "휴가",
+        "휴직",
+        "가족돌봄휴가",
+        "가족돌봄",
+        "육아지원",
+    ],
+
+    "노동정책": [
+        "근로기준법 개정",
+        "근로기준법 개정안",
+        "노동조합법 개정",
+        "노동조합법 개정안",
+        "노조법 개정",
+        "노조법 개정안",
+        "노동법 개정",
+        "노동법 개정안",
+        "법률 개정안",
+        "법률 개정",
+        "법안 발의",
+        "법안 통과",
+        "법안 가결",
+        "국회 본회의 통과",
+        "국회 통과",
+        "입법예고",
+        "입법 예고",
+        "시행령 개정",
+        "시행령 개정안",
+        "시행규칙 개정",
+        "시행규칙 개정안",
+        "제도 개편",
+        "제도 변경",
+        "제도 시행",
+        "제도 도입",
+        "대법원 판결",
+        "대법원 선고",
+        "대법원 판단",
+        "법원 판결",
+        "법원 선고",
+        "법원 판단",
+        "노동위원회 판정",
+        "노동위원회 결정",
+        "중노위 판정",
+        "중노위 결정",
+        "지노위 판정",
+        "지노위 결정",
+    ],
 }
+
 
 def get_related_topics(
     row: pd.Series,
@@ -1171,62 +1368,14 @@ def get_related_topics(
 
     title = str(
         row.get("title", "")
-    ).strip()
+    ).strip().lower()
 
     summary = str(
         row.get("summary", "")
-    ).strip()
+    ).strip().lower()
 
-    # ========================================================
-    # summary를 중심으로 토픽 판단
-    # 제목은 보조 정보로만 사용
-    # ========================================================
-
-    search_text = summary.lower()
-
-    title_text = title.lower()
-
-    # ========================================================
-    # 정책·법률 성격이 강한 표현 우선 처리
-    # ========================================================
-
-    policy_priority_keywords = [
-        "노동법 개정",
-        "노동법안",
-        "노동정책",
-        "고용정책",
-        "고용노동부",
-        "노조법",
-        "법안 발의",
-        "법안",
-        "개정안",
-        "입법",
-        "시행령",
-        "시행규칙",
-        "제도 개편",
-        "제도 변경",
-        "정책 변경",
-        "법원 판결",
-        "대법원",
-        "대법",
-        "판결",
-        "노동위원회",
-        "중노위",
-        "지노위",
-    ]
-
-    for keyword in policy_priority_keywords:
-
-        if keyword.lower() in search_text:
-
-            return ["노동정책"]
-
-    # ========================================================
-    # 토픽별 키워드 점수 계산
-    #
-    # summary에 등장하면 높은 점수
-    # title에만 등장하면 낮은 점수
-    # ========================================================
+    # 제목과 요약을 합쳐서 세부 토픽 판정
+    full_text = f"{title} {summary}"
 
     topic_scores = {}
 
@@ -1238,40 +1387,63 @@ def get_related_topics(
 
             keyword_lower = keyword.lower()
 
-            # summary는 핵심 판단 기준
-            if keyword_lower in search_text:
+            # 제목에 있으면 가장 강하게
+            if keyword_lower in title:
                 score += 3
 
-            # 제목은 보조 판단
-            elif keyword_lower in title_text:
+            # 요약에 있으면 그다음
+            elif keyword_lower in summary:
                 score += 1
 
         if score > 0:
             topic_scores[topic] = score
 
-    # ========================================================
-    # 점수가 높은 토픽 순으로 정렬
-    # ========================================================
+    # --------------------------------------------------------
+    # 아무 토픽도 잡히지 않는 경우
+    # --------------------------------------------------------
 
-    if topic_scores:
+    if not topic_scores:
+        return ["트렌드 · 타사 사례"]
 
-        sorted_topics = sorted(
-            topic_scores.items(),
-            key=lambda item: item[1],
-            reverse=True
-        )
+    # --------------------------------------------------------
+    # 토픽 우선순위
+    # --------------------------------------------------------
 
-        return [
-            topic
-            for topic, score
-            in sorted_topics[:max_topics]
-        ]
+    topic_order = {
+        "보상·임금": 1,
+        "노사관계": 2,
+        "채용": 3,
+        "인력변화": 4,
+        "평가·인사제도": 5,
+        "조직·근무제도": 6,
+        "휴가·휴직": 7,
+        "노동정책": 8,
+    }
 
-    # ========================================================
-    # 아무 토픽도 매칭되지 않는 경우
-    # ========================================================
+    sorted_topics = sorted(
+        topic_scores.items(),
+        key=lambda item: (
+            item[1],
+            -topic_order.get(item[0], 99)
+        ),
+        reverse=True
+    )
 
-    return ["트렌드 · 타사 사례"]
+    top_score = sorted_topics[0][1]
+
+    selected_topics = []
+
+    for topic, score in sorted_topics:
+
+        # 최고 토픽의 45% 이상만 표시
+        if score >= max(
+            2,
+            top_score * 0.45
+        ):
+            selected_topics.append(topic)
+
+    return selected_topics[:max_topics]
+
 # ============================================================
 # 데이터 안전 처리
 # ============================================================
@@ -1993,7 +2165,6 @@ if search_keyword.strip():
     search_columns = [
         "title",
         "summary",
-        "topic"
     ]
 
     search_mask = pd.Series(
