@@ -1983,10 +1983,8 @@ with st.sidebar:
         "트렌드 · 타사 사례"
     ]
     topic_rows = [
-        topic_names[0:3],
-        topic_names[3:6],
-        topic_names[6:9],
-        topic_names[9:10],
+        topic_names[i:i+3]
+        for i in range(0, len(topic_names), 3)
     ]
 
     for topic_row in topic_rows:
