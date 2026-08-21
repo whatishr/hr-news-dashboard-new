@@ -115,7 +115,7 @@ st.markdown(
 
     .sg-card-header {
         padding: 8px 11px;
-        font-size: 12px;
+        font-size: 11px;
         font-weight: 600;
         color: #f8fafc;
         display: flex;
@@ -195,7 +195,7 @@ st.markdown(
         background-color: #ffffff;
         border: 1px solid #e2e8f0;
         border-radius: 7px;
-        margin-bottom: 10px;
+        margin-bottom: 6px;
         overflow: hidden;
         box-shadow: 0 1px 2px rgba(15, 23, 42, 0.02);
         transition:
@@ -209,10 +209,10 @@ st.markdown(
     }
 
     .card-header {
-        min-height: 36px;
-        padding: 7px 10px;
-        font-size: 13px;
-        font-weight: 600;
+        min-height: 30px;
+        padding:5px 10px 5px 10px;
+        font-size: 12px;
+        font-weight: 500;
         color: #1e293b;
         display: flex;
         align-items: center;
@@ -330,6 +330,66 @@ st.markdown(
     .btn-link:hover {
         background-color: #1e293b;
     }
+
+    .chip-red{
+        background:#fff2f2;
+        border:1px solid #ffc7c7;
+        color:#dc2626;
+    }
+
+    .chip-orange{
+        background:#fff6ed;
+        border:1px solid #ffd8b5;
+        color:#ea580c;
+    }
+
+    .chip-blue{
+        background:#eff6ff;
+        border:1px solid #bfdbfe;
+        color:#2563eb;
+    }
+
+    .chip-green{
+        background:#ecfdf5;
+        border:1px solid #bbf7d0;
+        color:#15803d;
+    }
+
+    .chip-purple{
+        background:#faf5ff;
+        border:1px solid #e9d5ff;
+        color:#7e22ce;
+    }
+
+    .chip-pink{
+        background:#fdf2f8;
+        border:1px solid #fbcfe8;
+        color:#db2777;
+    }
+
+    .chip-indigo{
+        background:#eef2ff;
+        border:1px solid #c7d2fe;
+        color:#4338ca;
+    }
+
+    .chip-sky{
+        background:#f0f9ff;
+        border:1px solid #bae6fd;
+        color:#0284c7;
+    }
+
+    .chip-teal{
+        background:#f0fdfa;
+        border:1px solid #99f6e4;
+        color:#0f766e;
+    }
+
+    .chip-gray{
+        background:#f8fafc;
+        border:1px solid #e2e8f0;
+        color:#475569;
+    }    
         /* ============================================
        필터 영역
        ============================================ */
@@ -352,7 +412,7 @@ st.markdown(
     }
 
     .result-count {
-        font-size: 13px;
+        font-size: 10px;
         color: #475569;
         margin: 8px 0 14px 0;
         font-weight: 500;
@@ -380,11 +440,11 @@ st.markdown(
        ============================================ */
 
     .sec-header {
-        font-size: 15px;
+        font-size: 14px;
         font-weight: 700;
         color: #1e293b;
-        margin-top: 18px;
-        margin-bottom: 10px;
+        margin-top: 10px;
+        margin-bottom: 6px;
         padding-bottom: 7px;
         border-bottom: 1px solid #e2e8f0;
         letter-spacing: -0.2px;
@@ -419,33 +479,70 @@ st.markdown(
         font-size: 11px;
         margin-bottom: 8px;
     }
+    
+    .news-card{
+        position:relative;
+    }
+
+    .hr-topic-chip{
+        position:absolute;
+
+        top:4px;
+        right:7px;
+
+        min-width:50px;
+        height:22px;
+        padding:0 8px;
+
+        display:flex;
+        align-items:center;
+        justify-content:center;
+
+        border-radius:6px;
+
+        font-size:10px;
+        font-weight:700;
+
+        box-sizing:border-box;
+    }
 
     /* ============================================
        더보기
        ============================================ */
 
-    div[data-testid="stExpander"] {
-        border: 1px solid #dce3ec !important;
-        border-radius: 6px !important;
-        background-color: #f8fafc !important;
-        margin-top: 2px !important;
-        margin-bottom: 4px !important;
-        box-shadow: none !important;
+    div[data-testid="stExpander"]{
+        min-height:32px !important;
+        margin-top:2px !important;
+        margin-bottom:2px !important;
     }
 
-    div[data-testid="stExpander"] summary p {
-        min-height: 0 !important;
-        padding: 2px 8px !important;
-        font-size: 13px !important;
-        font-weight: 600 !important;
-        color: #64748b !important;
-        background-color: #f8fafc !important;
-        border-radius: 6px !important;
+    div[data-testid="stExpander"] summary{
+        min-height:30px !important;
+        display:flex !important;
+        align-items:center !important;
+    }
+
+    div[data-testid="stExpander"] summary p{
+        padding:0px 8px !important;
+        font-size:12px !important;
+        line-height:28px !important;
+        font-weight:600 !important;
     }
 
     div[data-testid="stExpander"] summary:hover {
         color: #334155 !important;
         background-color: #f1f5f9 !important;
+    }
+
+    div[data-testid="stExpander"] > details{
+    margin:0 !important;
+    padding:0 !important;
+    }
+
+    div[data-testid="stExpander"] summary{
+        min-height:28px !important;
+        height:28px !important;
+        padding:0 !important;
     }
 
     div[data-testid="stExpanderDetails"] {
@@ -455,7 +552,7 @@ st.markdown(
 
     /* 컬럼 사이 간격 */
     div[data-testid="stHorizontalBlock"] {
-        gap: 1.1rem;
+        gap: 1.2rem;
     }
 
 
@@ -479,6 +576,12 @@ st.markdown(
 section[data-testid="stSidebar"] {
     background: #1b2230 !important;
     background-color: #1b2230 !important;
+}
+
+/* 사이드바 폭 */
+section[data-testid="stSidebar"]{
+    width:260px !important;
+    min-width:260px !important;
 }
 
 /* Streamlit 사이드바 내부 모든 주요 wrapper */
@@ -682,16 +785,16 @@ section[data-testid="stSidebar"] div[data-testid="stMultiSelect"] {
 /* 셀렉박스 전체 외곽 */
 section[data-testid="stSidebar"] div[data-testid="stSelectbox"] div[data-baseweb="select"],
 section[data-testid="stSidebar"] div[data-testid="stMultiSelect"] div[data-baseweb="select"] {
-    min-height: 28px !important;
-    height: 28px !important;
+    min-height: 32px !important;
+    height: 32px !important;
     font-size: 11px !important;
 }
 
 /* 실제 흰색 박스 */
 section[data-testid="stSidebar"] div[data-testid="stSelectbox"] div[data-baseweb="select"] > div,
 section[data-testid="stSidebar"] div[data-testid="stMultiSelect"] div[data-baseweb="select"] > div {
-    min-height: 24px !important;
-    height: 24px !important;
+    min-height: 30px !important;
+    height: 30px !important;
     background-color: #ffffff !important;
     border-radius: 5px !important;
     border: none !important;
@@ -700,8 +803,8 @@ section[data-testid="stSidebar"] div[data-testid="stMultiSelect"] div[data-basew
 
 /* 값이 표시되는 영역 */
 section[data-testid="stSidebar"] div[data-baseweb="select"] div[class*="ValueContainer"] {
-    min-height: 24px !important;
-    height: 24px !important;
+    min-height: 30px !important;
+    height: 30px !important;
     padding: 0 8px !important;
     display: flex !important;
     align-items: center !important;
@@ -718,7 +821,7 @@ div[class*="singleValue"],
 section[data-testid="stSidebar"] div[data-testid="stSelectbox"]
 div[data-baseweb="select"]
 div[class*="singleValue"] span {
-    font-size: 10px !important;
+    font-size: 11px !important;
     line-height: 1.2 !important;
     color: #1e293b !important;
     font-weight: 400 !important;
@@ -769,8 +872,8 @@ section[data-testid="stSidebar"] div[data-testid="stSelectbox"] div[data-baseweb
 
 /* 오른쪽 화살표 영역 */
 section[data-testid="stSidebar"] div[data-baseweb="select"] div[class*="IndicatorsContainer"] {
-    height: 28px !important;
-    min-height: 28px !important;
+    height: 30px !important;
+    min-height: 30px !important;
 }
 
 
@@ -849,8 +952,9 @@ section[data-testid="stSidebar"] .topic-chip-label {
     margin-bottom: 6px !important;
 }
 
-section[data-testid="stSidebar"] div[data-testid="stButton"] {
-    margin-bottom: 3px !important;
+/* HR 이슈 행간 */
+section[data-testid="stSidebar"] .st-key-hr_topic_container {
+    gap: 0.35rem !important;
 }
 
 section[data-testid="stSidebar"] div[data-testid="stButton"] > button {
@@ -883,6 +987,19 @@ section[data-testid="stSidebar"] div[data-testid="stButton"] > button:hover {
     color: #ffffff !important;
     background-color: #303b50 !important;
 }
+
+/* ------------------------------------------------------------
+   HR 이슈 토픽 행간
+   ------------------------------------------------------------ */
+
+section[data-testid="stSidebar"]
+div[data-testid="stVerticalBlock"]:has(
+    > div[data-testid="stHorizontalBlock"]
+    div[data-testid="stButton"]
+) {
+    gap: 0.2rem !important;
+}
+
 </style>
 """,
     unsafe_allow_html=True
@@ -942,6 +1059,7 @@ def load_data(
 
     required_columns = [
         "category",
+        "sub_category",
         "date_str",
         "title",
         "summary",
@@ -980,294 +1098,6 @@ def load_data(
         drop=True
     )
 
-
-
-# ============================================================
-# HR 세부 토픽 분류
-#
-# category = collector.py에서 결정한 대분류
-# topic    = app.py에서 title + summary를 기준으로 세부분류
-# ============================================================
-
-HR_TOPIC_KEYWORDS = {
-
-    "보상·임금": [
-        "임금",
-        "급여",
-        "연봉",
-        "성과급",
-        "성과보상",
-        "상여금",
-        "임금인상",
-        "보수",
-        "보상체계",
-        "성과보상제",
-        "임금체계",
-        "임금제도",
-        "복리후생",
-        "처우개선",
-        "퇴직금",
-        "퇴직급여",
-        "퇴직급여비용",
-        "퇴직비용",
-        "평균임금",
-        "임금성",
-        "임금에 해당",
-        "성과급의 임금성",
-        "근로의 대가",
-        "TAI",
-        "목표 인센티브",
-    ],
-
-    "노사관계": [
-        "노조",
-        "노동조합",
-        "노조원",
-        "단체교섭",
-        "노사협의",
-        "노사관계",
-        "임단협",
-        "임금협상",
-        "파업",
-        "쟁의",
-        "쟁의행위",
-        "노사갈등",
-        "노사협상",
-    ],
-
-    "채용": [
-        "채용",
-        "채용공고",
-        "신입사원",
-        "신입채용",
-        "경력채용",
-        "경력직",
-        "인재채용",
-        "채용시장",
-        "채용전형",
-        "채용평가",
-        "채용방식",
-        "온보딩",
-    ],
-
-    "인력변화": [
-        "희망퇴직",
-        "명예퇴직",
-        "정년",
-        "정년퇴직",
-        "계속고용",
-        "고용연장",
-        "구조조정",
-        "인력감축",
-        "인력재편",
-        "인력 재편",
-        "인력재배치",
-        "인력 이동",
-        "인력조정",
-        "직무전환",
-        "대규모 해고",
-        "정리해고",
-        "감원",
-        "해고",
-        "리스킬링",
-        "업스킬링",
-    ],
-
-    "평가·인사제도": [
-        "인사평가",
-        "성과평가",
-        "평가제도",
-        "성과관리",
-        "성과관리제도",
-        "승진",
-        "승진제도",
-        "직급",
-        "직급제도",
-        "인사제도",
-        "인사관리",
-        "인사운영",
-        "인사정책",
-        "평가기준",
-        "평가 기준",
-        "성과 평가 기준",
-        "전보",
-        "부당전보",
-        "배치전환",
-        "인사이동",
-        "취업규칙",
-        "근로계약",
-        "징계제도",
-        "징계기준",
-        "징계절차",
-    ],
-
-    "조직·근무제도": [
-        "조직문화",
-        "기업문화",
-        "조직 개편",
-        "조직 개편",
-        "조직 쇄신",
-        "조직쇄신",
-        "조직운영",
-        "조직설계",
-        "근무제도",
-        "근무방식",
-        "일하는 방식",
-        "재택근무",
-        "출근정책",
-        "유연근무",
-        "시차출퇴근",
-        "근로시간",
-        "근무시간",
-        "근로시간제",
-        "주4일제",
-        "주 4일제",
-        "주4일 근무",
-        "근로시간 단축",
-        "근무시간 단축",
-        "AI 도입",
-        "AI 활용",
-        "AI 정책",
-        "인공지능 도입",
-        "인공지능 활용",
-        "인공지능 정책",
-    ],
-
-    "휴가·휴직": [
-        "육아휴직",
-        "출산휴가",
-        "연차",
-        "휴가",
-        "휴직",
-        "가족돌봄휴가",
-        "가족돌봄",
-        "육아지원",
-    ],
-
-    "노동정책": [
-        "근로기준법 개정",
-        "근로기준법 개정안",
-        "노동조합법 개정",
-        "노동조합법 개정안",
-        "노조법 개정",
-        "노조법 개정안",
-        "노동법 개정",
-        "노동법 개정안",
-        "법률 개정안",
-        "법률 개정",
-        "법안 발의",
-        "법안 통과",
-        "법안 가결",
-        "국회 본회의 통과",
-        "국회 통과",
-        "입법예고",
-        "입법 예고",
-        "시행령 개정",
-        "시행령 개정안",
-        "시행규칙 개정",
-        "시행규칙 개정안",
-        "제도 개편",
-        "제도 변경",
-        "제도 시행",
-        "제도 도입",
-        "대법원 판결",
-        "대법원 선고",
-        "대법원 판단",
-        "법원 판결",
-        "법원 선고",
-        "법원 판단",
-        "노동위원회 판정",
-        "노동위원회 결정",
-        "중노위 판정",
-        "중노위 결정",
-        "지노위 판정",
-        "지노위 결정",
-    ],
-}
-
-
-def get_related_topics(
-    row: pd.Series,
-    max_topics: int = 3
-) -> list[str]:
-
-    title = str(
-        row.get("title", "")
-    ).strip().lower()
-
-    summary = str(
-        row.get("summary", "")
-    ).strip().lower()
-
-    # 제목과 요약을 합쳐서 세부 토픽 판정
-    full_text = f"{title} {summary}"
-
-    topic_scores = {}
-
-    for topic, keywords in HR_TOPIC_KEYWORDS.items():
-
-        score = 0
-
-        for keyword in keywords:
-
-            keyword_lower = keyword.lower()
-
-            # 제목에 있으면 가장 강하게
-            if keyword_lower in title:
-                score += 3
-
-            # 요약에 있으면 그다음
-            elif keyword_lower in summary:
-                score += 1
-
-        if score > 0:
-            topic_scores[topic] = score
-
-    # --------------------------------------------------------
-    # 아무 토픽도 잡히지 않는 경우
-    # --------------------------------------------------------
-
-    if not topic_scores:
-        return ["트렌드 · 타사 사례"]
-
-    # --------------------------------------------------------
-    # 토픽 우선순위
-    # --------------------------------------------------------
-
-    topic_order = {
-        "보상·임금": 1,
-        "노사관계": 2,
-        "채용": 3,
-        "인력변화": 4,
-        "평가·인사제도": 5,
-        "조직·근무제도": 6,
-        "휴가·휴직": 7,
-        "노동정책": 8,
-    }
-
-    sorted_topics = sorted(
-        topic_scores.items(),
-        key=lambda item: (
-            item[1],
-            -topic_order.get(item[0], 99)
-        ),
-        reverse=True
-    )
-
-    top_score = sorted_topics[0][1]
-
-    selected_topics = []
-
-    for topic, score in sorted_topics:
-
-        # 최고 토픽의 45% 이상만 표시
-        if score >= max(
-            2,
-            top_score * 0.45
-        ):
-            selected_topics.append(topic)
-
-    return selected_topics[:max_topics]
 
 # ============================================================
 # 데이터 안전 처리
@@ -1337,7 +1167,23 @@ def safe_url(
 
     except ValueError:
         return ""
+    
+def get_topic_class(topic):
 
+    mapping = {
+        "판례":"chip-red",
+        "노동정책":"chip-orange",
+        "노동법":"chip-blue",
+        "보상·임금":"chip-green",
+        "노사관계":"chip-purple",
+        "채용":"chip-orange",
+        "인력변화":"chip-sky",
+        "평가·인사제도":"chip-pink",
+        "조직·근무제도":"chip-indigo",
+        "휴가·휴직":"chip-teal",
+    }
+
+    return mapping.get(topic,"chip-gray")
 
 def parse_checkpoints(
     value: object
@@ -1476,18 +1322,26 @@ def build_card_html(
     )
 
     # --------------------------------------------------------
-    # HR 영향도 / 관련 토픽 표시
+    # HR 영향도 / sub_category 표시
     # --------------------------------------------------------
 
-    related_topics = get_related_topics(
-        row,
-        max_topics=3
-    )
+    topic_text = str(
+        row.get(
+            "sub_category",
+            ""
+        )
+    ).strip()
 
-    topic_text = " · ".join(
-        related_topics
-    )
+    topic_html = ""
 
+    if topic_text:
+        topic_class = get_topic_class(topic_text)
+
+        topic_html = (
+            f'<span class="hr-topic-chip {topic_class}">'
+            f'{safe_text(topic_text)}'
+            '</span>'
+        )
 
     # --------------------------------------------------------
     # 체크포인트
@@ -1618,13 +1472,10 @@ def build_card_html(
         f'title="{clean_title}">'
         f'{clean_title}'
         '</span>'
+        f'{topic_html}'
+
         '</div>'
 
-        '<div class="hr-impact-line">'
-        f'<span class="hr-impact-topic">'
-        f'{safe_text(topic_text)}'
-        f'</span>'
-        '</div>'
 
         '<div class="card-body">'
 
@@ -1779,7 +1630,7 @@ with st.sidebar:
 
     st.markdown(
         '<div class="sidebar-subtitle">'
-        "HR에 영향을 주는 주요 이슈를 한눈에 살펴보세요."
+        "HR 주요 이슈를 한눈에 살펴보세요."
         "</div>",
         unsafe_allow_html=True
     )
@@ -1804,49 +1655,60 @@ with st.sidebar:
     if "selected_hr_topics" not in st.session_state:
         st.session_state.selected_hr_topics = []
 
-    topic_names = list(HR_TOPIC_KEYWORDS.keys()) + [
-        "트렌드 · 타사 사례"
+    topic_names = [
+        "보상·임금",
+        "노사관계",
+        "채용",
+        "인력변화",
+        "평가·인사제도",
+        "조직·근무제도",
+        "휴가·휴직",
+        "노동정책",
+        "판례",
+        "트렌드 · 타사 사례",
     ]
+
     topic_rows = [
-        topic_names[i:i+3]
-        for i in range(0, len(topic_names), 3)
+        topic_names[i:i+2]
+        for i in range(0, len(topic_names), 2)
     ]
 
-    for topic_row in topic_rows:
+    with st.container(key="hr_topic_container"):
 
-        cols = st.columns(len(topic_row))
+        for topic_row in topic_rows:
 
-        for col, topic in zip(cols, topic_row):
+            cols = st.columns(len(topic_row))
 
-            with col:
+            for col, topic in zip(cols, topic_row):
+                with col:
 
-                is_selected = (
-                    topic
-                    in st.session_state.selected_hr_topics
-                )
+                    is_selected = (
+                        topic
+                        in st.session_state.selected_hr_topics
+                    )
 
-                button_label = (
-                    f"✓ {topic}"
-                    if is_selected
-                    else topic
-                )
+                    button_label = (
+                        f"✓ {topic}"
+                        if is_selected
+                        else topic
+                    )
 
-                if st.button(
-                    button_label,
-                    key=f"topic_{topic}",
-                    use_container_width=True
-                ):
+                    if st.button(
+                        button_label,
+                        key=f"topic_{topic}",
+                        use_container_width=True
+                    ):
 
-                    if topic in st.session_state.selected_hr_topics:
-                        st.session_state.selected_hr_topics.remove(topic)
-                    else:
-                        st.session_state.selected_hr_topics.append(topic)
+                        if topic in st.session_state.selected_hr_topics:
+                            st.session_state.selected_hr_topics.remove(topic)
+                        else:
+                            st.session_state.selected_hr_topics.append(topic)
 
-                    st.rerun()
+                        st.rerun()
 
-    selected_hr_topics = (
-        st.session_state.selected_hr_topics
-    )
+        selected_hr_topics = (
+            st.session_state.selected_hr_topics
+        )
 
     st.markdown("### 📅 수집 기간")
 
@@ -1988,6 +1850,8 @@ if search_keyword.strip():
     search_columns = [
         "title",
         "summary",
+        "sub_category",
+
     ]
 
     search_mask = pd.Series(
@@ -2022,16 +1886,9 @@ if search_keyword.strip():
 
 if selected_hr_topics:
 
-    topic_mask = filtered_df.apply(
-        lambda row: any(
-            selected_topic in get_related_topics(
-                row,
-                max_topics=3
-            )
-            for selected_topic
-            in selected_hr_topics
-        ),
-        axis=1
+    topic_mask = (
+        filtered_df["sub_category"]
+        .isin(selected_hr_topics)
     )
 
     filtered_df = filtered_df[
@@ -2143,14 +2000,19 @@ else:
 search_related_topics = set()
 
 if search_keyword.strip():
-
     for _, row in filtered_df.iterrows():
 
-        related_topics = get_related_topics(row)
+        sub_category = str(
+            row.get(
+                "sub_category",
+                ""
+            )
+        ).strip()
 
-        search_related_topics.update(
-            related_topics
-        )
+        if sub_category:
+            search_related_topics.add(
+                sub_category
+            )
 
 with st.sidebar:
 
@@ -2203,9 +2065,7 @@ if search_keyword.strip() and search_related_topics:
 # 카테고리 배치
 # ============================================================
 
-row1_col1, row1_col2 = st.columns(
-    2
-)
+row1_col1, spacer, row1_col2 = st.columns([1, 0.08, 1])
 
 with row1_col1:
     render_category_with_more(
@@ -2223,14 +2083,12 @@ with row1_col2:
 
 
 st.markdown(
-    "<div style='height:22px;'></div>",
+    "<div style='height:10px;'></div>",
     unsafe_allow_html=True
 )
 
 
-row2_col1, row2_col2 = st.columns(
-    2
-)
+row2_col1, spacer, row2_col2 = st.columns([1, 0.08, 1])
 
 with row2_col1:
     render_category_with_more(
