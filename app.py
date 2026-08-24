@@ -2070,8 +2070,8 @@ row1_col1, spacer, row1_col2 = st.columns([1, 0.08, 1])
 with row1_col1:
     render_category_with_more(
         filtered_df,
-        "HR 제도·조직",
-        "HR 제도·조직"
+        "HR 제도·조직운영",
+        "HR 제도·조직운영"
     )
 
 with row1_col2:
