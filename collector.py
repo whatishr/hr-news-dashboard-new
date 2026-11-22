@@ -118,7 +118,7 @@ MAX_CANDIDATES_PER_SEARCH_GROUP = 60
 # 과거 데이터는 CSV에 계속 누적됩니다.
 # ------------------------------------------------------------
 
-SMILEGATE_DAILY_LIMIT = 10
+NOTA_DAILY_LIMIT = 10
 NORMAL_CATEGORY_DAILY_LIMIT = 10
 
 # ------------------------------------------------------------
@@ -153,7 +153,7 @@ CSV_COLUMNS = [
 # 최종 카테고리
 # ============================================================
 
-CATEGORY_SMILEGATE = "오늘의 스마일게이트"
+CATEGORY_NOTA = "오늘의 노타"
 CATEGORY_HR_SYSTEM = "HR 제도·조직운영"
 CATEGORY_WORKFORCE = "채용·인력운영"
 CATEGORY_LABOR_RELATIONS = "보상·노사관계"
@@ -161,7 +161,7 @@ CATEGORY_LAW = "노동법·정책·판례"
 
 
 CATEGORY_ORDER = [
-    CATEGORY_SMILEGATE,
+    CATEGORY_NOTA,
     CATEGORY_LAW,
     CATEGORY_LABOR_RELATIONS,
     CATEGORY_WORKFORCE,
@@ -202,7 +202,7 @@ SUB_CATEGORY_BY_CATEGORY = {
 # 최종 카테고리는 Gemini가 다시 판단합니다.
 # ============================================================
 
-SEARCH_SMILEGATE = "smilegate"
+SEARCH_NOTA = "nota"
 SEARCH_HR_SYSTEM = "hr_system"
 SEARCH_WORKFORCE = "workforce"
 SEARCH_LABOR_RELATIONS = "labor_relations"
@@ -211,17 +211,25 @@ SEARCH_LAW = "labor_law"
 
 SEARCH_GROUPS = {
 
-    SEARCH_SMILEGATE: [
-        "스마일게이트",
-        "스마일게이트 신작",
-        "스마일게이트 사업",
-        "스마일게이트 글로벌",
-        "스마일게이트 투자",
-        "스마일게이트 경영",
-        "스마일게이트 AI",
-        "스마일게이트 희망스튜디오",
-        "스마일게이트 채용",
-        "스마일게이트 조직"
+    SEARCH_NOTA: [
+        # '노타' 단독 검색은 다른 단어와 섞일 수 있어
+        # 회사명·제품명·대표명 조합 위주로 검색합니다.
+        "노타AI",
+        "노타 AI",
+        "Nota AI",
+        "노타 채명수",
+        "노타 넷츠프레소",
+        "넷츠프레소",
+        "노타 비전 에이전트",
+        "노타 온디바이스",
+        "노타 경량화",
+        "노타 NPU",
+        "노타 협력",
+        "노타 수주",
+        "노타 실적",
+        "노타 글로벌",
+        "노타 채용",
+        "노타 조직"
     ],
 
     SEARCH_HR_SYSTEM: [
@@ -321,7 +329,7 @@ SEARCH_GROUPS = {
 # ============================================================
 # 명백한 비대상 기사
 #
-# 스마일게이트 검색에는 적용하지 않습니다.
+# 노타 검색에는 적용하지 않습니다.
 # ============================================================
 
 HARD_EXCLUDE_KEYWORDS = [
@@ -1097,11 +1105,11 @@ def collect_raw_candidates(
                     if not title:
                         continue
 
-                    # 스마일게이트는 HR 여부와 무관한
+                    # 노타는 HR 여부와 무관한
                     # 회사 소식이므로 HR용 필터를 적용하지 않습니다.
                     if (
                         search_group
-                        != SEARCH_SMILEGATE
+                        != SEARCH_NOTA
                     ):
 
                         if contains_hard_exclude(
@@ -1520,83 +1528,85 @@ search_keyword와 search_group은
 
 
 ============================================================
-STEP 1. 오늘의 스마일게이트
+STEP 1. 오늘의 노타
 ============================================================
+
+여기서 '노타'는 AI 모델 경량화·최적화 기업
+노타(Nota AI, 대표 채명수,
+AI 최적화 플랫폼 넷츠프레소(NetsPresso),
+영상관제 솔루션 노타 비전 에이전트(NVA))를 말합니다.
+
+'노타'라는 글자가 다른 의미로 쓰였거나
+동명의 다른 회사·인물이면 노타 기사가 아닙니다.
 
 가장 먼저 다음 질문을 판단합니다.
 
 "이 기사의 핵심 주어와 핵심 사건의 당사자가
-스마일게이트 또는 스마일게이트의
-게임·서비스·재단·조직인가?"
+노타 또는 노타의 제품·서비스·조직인가?"
 
 명확하게 YES인 경우에만
-category="오늘의 스마일게이트"를 검토합니다.
+category="오늘의 노타"를 검토합니다.
 
 HR 관련 여부는 상관없습니다.
 
 포함 가능:
 
-- 스마일게이트 게임 및 신작
-- 라이브 서비스의 주요 변화
-- 주요 사업전략
-- 글로벌 사업
-- 주요 투자 및 유통
-- AI·기술
+- 넷츠프레소·NVA 등 제품 출시·주요 업데이트
+- AI 경량화·최적화·온디바이스 AI 기술 성과
+- 주요 고객사·반도체 기업과의 파트너십·공급계약·수주
+- 정부 과제·국책사업 선정
+- 글로벌 사업·해외 법인·해외 진출
+- 투자 유치·실적·공시 등 경영 주요 사항
 - 채용·조직
-- 경영
-- ESG·사회공헌
-- 주요 파트너십
-- 핵심 IP의 주요 성과
+- 대표·경영진의 노타 사업 관련 공식 발언·인터뷰
+- 수상·인증 중 노타 단독이 주인공인 것
 
 반드시 제외:
 
-- 투자받은 회사가 기사 주인공이고
-  스마일게이트인베스트먼트는 투자자 중 하나
+- 파트너사·고객사가 기사 주인공이고
+  노타는 협력사·참여사 중 하나로만 언급
 
-- 여러 게임사의 신작·실적·사업을 묶은 기사
+- 여러 AI 기업·스타트업을 묶은 기사
 
 - 제목의 핵심 주어가
-  게임업계, 게임사들, 국내 게임사,
-  MMORPG 시장, e스포츠 업계,
-  게임시장 등 산업 전체인 기사
+  AI업계, AI 스타트업들, 온디바이스 AI 시장,
+  AI 반도체 업계, 국내 AI 기업 등
+  산업 전체인 기사
 
 - 여러 회사 이름이 병렬로 등장하며
-  스마일게이트가 여러 사례 중 하나인 기사
+  노타가 여러 사례 중 하나인 기사
 
-- 게임시장 전망
-- 업계 실적 비교
-- 게임전시회 일반 기사
-- e스포츠 산업 일반 기사
-- 이용자 트렌드 기사
-- 장르 트렌드 기사
+- 정부 사업 선정 기업 명단 속 한 곳으로만 등장
+- 단순 주가 등락·특징주·테마주 묶음 기사
+- 업종·상장사 수익률 비교 기사
+- AI 시장 전망
+- 기술 트렌드 일반 기사
+- 행사·전시회 일반 기사
 - 카드뉴스형 산업 콘텐츠
 - 묶음기사 속 작은 한 꼭지
 
 예:
 
-"스마일게이트 북미 시장 공략 가속"
+"노타, 넷츠프레소 신규 버전 공개"
 → 포함
 
-"스마일게이트 크로스파이어, EWC 정식 종목"
+"노타, 해외 반도체 기업과 AI 최적화 공급계약"
 → 포함
 
-"스마일게이트 퓨처랩, 신규 프로그램 시작"
+"노타, 비전 에이전트로 해외 교통관제 사업 수주"
 → 포함
 
 
-"자동사냥 넘어 무접속 성장으로…MMORPG 문법 바뀐다"
-→ 제외. MMORPG 시장 변화가 주제다.
+"온디바이스 AI 시장 급성장…국내 스타트업 각축"
+→ 제외. 시장 전체가 주제다.
 
-"하루 종일·밤샘 게임은 이제 옛말…게임업계 라이트 유저로"
-→ 제외. 게임업계 트렌드 기사다.
-
-"크래프톤·스마일게이트·펄어비스, 이용자와 개발자 접점 키운다"
+"A사·B사·노타, AI 반도체 생태계 협력"
 → 제외. 여러 회사 사례를 묶은 기사다.
 
-"게임업계 2Q 성적표"
-→ 제외. 업계 실적 분석이다.
+"AI 관련주 일제히 상승…노타도 강세"
+→ 제외. 단순 주가 기사다.
 
-스마일게이트 기사로 통과하면
+노타 기사로 통과하면
 이후 일반 HR 심사는 하지 않습니다.
 
 
@@ -1604,7 +1614,7 @@ HR 관련 여부는 상관없습니다.
 STEP 2. HR 기사 자격심사
 ============================================================
 
-스마일게이트 기사가 아닌 경우
+노타 기사가 아닌 경우
 카테고리를 고르기 전에 반드시 자격심사를 합니다.
 
 다음 질문에 명확하게 YES여야 합니다.
@@ -2267,8 +2277,8 @@ HR 기사로 인정하지 않습니다.
 STEP 7. 카테고리 우선순위
 ============================================================
 
-1. 스마일게이트 자체 주요 기사
-→ 오늘의 스마일게이트
+1. 노타 자체 주요 기사
+→ 오늘의 노타
 
 2. 외부 법·정책·공식 결정·법적 판단이 핵심
 → 노동법·정책·판례
@@ -2466,7 +2476,7 @@ rejection_type:
 - public_org
 - simple_non_it_recruitment
 - low_practical_value
-- smilegate_not_central
+- nota_not_central
 
 
 JSON만 출력하세요.
@@ -2686,10 +2696,10 @@ def classify_candidates_with_gemini(
                 practical_value = 0
 
             # ------------------------------------------------
-            # 스마일게이트는 HR 점수 기준 미적용
+            # 노타는 HR 점수 기준 미적용
             # ------------------------------------------------
 
-            if category != CATEGORY_SMILEGATE:
+            if category != CATEGORY_NOTA:
 
                 # Gemini가 include=true를 잘못 줘도
                 # 코드에서 최종 하한선을 다시 검사
@@ -2790,7 +2800,7 @@ def build_dedup_pool(
             ) == category
         ]
 
-        if category == CATEGORY_SMILEGATE:
+        if category == CATEGORY_NOTA:
 
             category_articles.sort(
                 key=lambda article: (
@@ -2800,7 +2810,7 @@ def build_dedup_pool(
             )
 
             base_limit = (
-                SMILEGATE_DAILY_LIMIT
+                NOTA_DAILY_LIMIT
             )
 
         else:
@@ -3137,32 +3147,32 @@ JSON만 출력하세요.
 
     return reviewed_articles
 
-def exclude_smilegate_duplicates_with_history(
+def exclude_nota_duplicates_with_history(
     articles: List[Dict[str, Any]]
 ) -> List[Dict[str, Any]]:
 
-    smilegate_articles = [
+    nota_articles = [
         article
         for article in articles
         if article.get("category")
-        == CATEGORY_SMILEGATE
+        == CATEGORY_NOTA
     ]
 
     other_articles = [
         article
         for article in articles
         if article.get("category")
-        != CATEGORY_SMILEGATE
+        != CATEGORY_NOTA
     ]
 
-    if not smilegate_articles:
+    if not nota_articles:
         return articles
 
-    previous_smilegate = (
-        load_previous_smilegate_articles()
+    previous_nota = (
+        load_previous_nota_articles()
     )
 
-    if not previous_smilegate:
+    if not previous_nota:
         return articles
 
     # --------------------------------------------------------
@@ -3171,7 +3181,7 @@ def exclude_smilegate_duplicates_with_history(
 
     latest_date = max(
         article["pub_dt"]
-        for article in smilegate_articles
+        for article in nota_articles
     )
 
     history_limit = (
@@ -3179,18 +3189,18 @@ def exclude_smilegate_duplicates_with_history(
         - datetime.timedelta(days=14)
     )
 
-    previous_smilegate = [
+    previous_nota = [
         article
-        for article in previous_smilegate
+        for article in previous_nota
         if article["pub_dt"] >= history_limit
     ]
 
-    if not previous_smilegate:
+    if not previous_nota:
         return articles
 
     article_payload = []
 
-    for article in smilegate_articles:
+    for article in nota_articles:
         article_payload.append({
             "id": article["id"],
             "title": article["title"],
@@ -3205,7 +3215,7 @@ def exclude_smilegate_duplicates_with_history(
 
     history_payload = []
 
-    for article in previous_smilegate:
+    for article in previous_nota:
         history_payload.append({
             "title": article["title"],
             "description": article.get(
@@ -3218,11 +3228,11 @@ def exclude_smilegate_duplicates_with_history(
         })
 
     prompt = f"""
-당신은 스마일게이트 뉴스 브리핑의
+당신은 노타 뉴스 브리핑의
 '과거 기사 중복 검사' 편집자입니다.
 
-오늘 새로 수집된 스마일게이트 기사와
-과거에 이미 저장된 스마일게이트 기사를 비교합니다.
+오늘 새로 수집된 노타 기사와
+과거에 이미 저장된 노타 기사를 비교합니다.
 
 목표는
 
@@ -3247,7 +3257,7 @@ def exclude_smilegate_duplicates_with_history(
 
 다음 요소가 실질적으로 같으면 중복입니다.
 
-1. 같은 스마일게이트 게임·서비스·사업·조직
+1. 같은 노타 제품·서비스·사업·조직
 2. 같은 핵심 사건
 3. 같은 발표·결정·성과
 4. 새로운 핵심 사실이 거의 없음
@@ -3255,28 +3265,28 @@ def exclude_smilegate_duplicates_with_history(
 예:
 
 과거:
-"스마일게이트, 신작 A 글로벌 출시"
+"노타, 넷츠프레소 신규 버전 공개"
 
 오늘:
-"스마일게이트 신작 A 글로벌 시장 공략"
+"노타, 넷츠프레소 신버전으로 온디바이스 AI 공략"
 
-→ 같은 글로벌 출시 사건이면 중복
+→ 같은 신규 버전 공개 사건이면 중복
 
 
 과거:
-"스마일게이트, 신작 A 출시"
+"노타, A사와 AI 최적화 협력 MOU"
 
 오늘:
-"스마일게이트 신작 A 첫 대규모 업데이트"
+"노타, A사와 AI 최적화 공급계약 체결"
 
-→ 새로운 업데이트 사건이므로 중복 아님
+→ MOU 이후 실제 계약이라는 새 사건이므로 중복 아님
 
 
 과거:
-"스마일게이트, 직원 300명 채용"
+"노타, 개발자 대규모 채용"
 
 오늘:
-"스마일게이트, AI 조직 신설"
+"노타, 미국 법인 신설"
 
 → 서로 다른 사건이므로 중복 아님
 
@@ -3285,19 +3295,20 @@ def exclude_smilegate_duplicates_with_history(
 특히 주의
 ============================================================
 
-단순히 같은 게임이나 같은 사업을 다룬다고
+단순히 같은 제품이나 같은 사업을 다룬다고
 중복 처리하지 마세요.
 
 다음은 별도 사건입니다.
 
-- 신작 발표 → 출시
-- 출시 → 업데이트
-- 업데이트 → 흥행 성과
-- 투자 발표 → 투자 집행
+- 제품 발표 → 정식 출시
+- 출시 → 주요 업데이트
+- MOU·협력 발표 → 실제 공급계약·수주
+- 수주 → 납품·사업 성과
+- 투자 유치 발표 → 투자 집행·후속 투자
 - 채용 발표 → 실제 채용 결과
 - 행사 참가 → 행사 성과
 - 사업 발표 → 실제 사업 확장
-- 계약 체결 → 계약 이후 새로운 성과
+- 실적 발표 → 다음 분기 실적
 
 
 ============================================================
@@ -3347,12 +3358,12 @@ duplicate=false
 JSON만 출력하세요.
 
 
-[오늘 신규 스마일게이트 기사]
+[오늘 신규 노타 기사]
 
 {json.dumps(article_payload, ensure_ascii=False)}
 
 
-[과거 저장된 스마일게이트 기사]
+[과거 저장된 노타 기사]
 
 {json.dumps(history_payload, ensure_ascii=False)}
 
@@ -3421,9 +3432,9 @@ JSON만 출력하세요.
             article_id
         ] = result
 
-    filtered_smilegate = []
+    filtered_nota = []
 
-    for article in smilegate_articles:
+    for article in nota_articles:
 
         result = result_by_id.get(
             article["id"]
@@ -3431,7 +3442,7 @@ JSON만 출력하세요.
 
         if result is None:
             # 판단 결과가 없으면 안전하게 유지
-            filtered_smilegate.append(
+            filtered_nota.append(
                 article
             )
             continue
@@ -3457,7 +3468,7 @@ JSON만 출력하세요.
             ).strip()
 
             print(
-                "   🚫 스마일게이트 과거기사 중복 제외: "
+                "   🚫 노타 과거기사 중복 제외: "
                 f"{article['title'][:60]}"
             )
 
@@ -3472,13 +3483,13 @@ JSON만 출력하세요.
 
             continue
 
-        filtered_smilegate.append(
+        filtered_nota.append(
             article
         )
 
     return (
         other_articles
-        + filtered_smilegate
+        + filtered_nota
     )
 # ============================================================
 # 기사 정렬 점수
@@ -3496,10 +3507,10 @@ def article_rank_score(
         article.get(
             "category"
         )
-        == CATEGORY_SMILEGATE
+        == CATEGORY_NOTA
     ):
 
-        # 스마일게이트는 HR 점수가 아니라
+        # 노타는 HR 점수가 아니라
         # 최신성을 중심으로 선정
         primary = 100
         secondary = 0
@@ -3800,10 +3811,10 @@ def generate_article_summary(
         )
     )
 
-    if category == CATEGORY_SMILEGATE:
+    if category == CATEGORY_NOTA:
 
         prompt = f"""
-당신은 스마일게이트 사내에서
+당신은 노타 사내에서
 외부 회사 소식을 공유하는 뉴스 브리핑 작성자입니다.
 
 [기사 제목]
@@ -3816,7 +3827,7 @@ def generate_article_summary(
 
 구성원이 빠르게 읽고
 
-- 스마일게이트에 어떤 소식이 있는지
+- 노타에 어떤 소식이 있는지
 - 회사 관점에서 왜 알아둘 만한지
 
 이해하도록 작성합니다.
@@ -3824,10 +3835,10 @@ def generate_article_summary(
 [작성 기준]
 
 1. 기사에 실제로 존재하는 사실만 사용합니다.
-2. 스마일게이트 관련 내용을 우선합니다.
-3. 업계 일반론보다 스마일게이트 관련 사실을 중심으로 씁니다.
+2. 노타 관련 내용을 우선합니다.
+3. 업계 일반론보다 노타 관련 사실을 중심으로 씁니다.
 4. 핵심 내용을 두 개의 불릿으로 요약합니다.
-5. checkpoints는 사업·게임·제품·시장·조직 관점에서
+5. checkpoints는 사업·기술·제품·고객·시장·조직 관점에서
    추가로 지켜볼 사항 두 가지를 작성합니다.
 6. 기사에 없는 전략을 지어내지 않습니다.
 7. 지나치게 거창한 컨설팅 표현을 사용하지 않습니다.
@@ -4078,9 +4089,9 @@ def load_previous_data() -> pd.DataFrame:
             columns=CSV_COLUMNS
         )
 
-def load_previous_smilegate_articles() -> List[Dict[str, Any]]:
+def load_previous_nota_articles() -> List[Dict[str, Any]]:
     """
-    기존 CSV에서 오늘의 스마일게이트 기사만 가져옵니다.
+    기존 CSV에서 오늘의 노타 기사만 가져옵니다.
 
     오늘 수집분과 과거 기사 사이의
     동일 사건 중복검사에 사용합니다.
@@ -4097,7 +4108,7 @@ def load_previous_smilegate_articles() -> List[Dict[str, Any]]:
 
         if str(
             row.get("category", "")
-        ).strip() != CATEGORY_SMILEGATE:
+        ).strip() != CATEGORY_NOTA:
             continue
 
         title = clean_text(
@@ -4514,13 +4525,13 @@ def run_collection() -> bool:
     )
 
     # --------------------------------------------------------
-    # 4-1. 과거 CSV의 스마일게이트 기사와 중복검사
+    # 4-1. 과거 CSV의 노타 기사와 중복검사
     #
     # 오늘 기사와 날짜가 달라도
     # 동일 사건이면 오늘 기사를 제외합니다.
     # --------------------------------------------------------
     duplicate_reviewed = (
-        exclude_smilegate_duplicates_with_history(
+        exclude_nota_duplicates_with_history(
             duplicate_reviewed
         )
     )
@@ -4554,9 +4565,9 @@ def run_collection() -> bool:
     for category in CATEGORY_ORDER:
 
         limit = (
-            SMILEGATE_DAILY_LIMIT
+            NOTA_DAILY_LIMIT
             if category
-            == CATEGORY_SMILEGATE
+            == CATEGORY_NOTA
             else NORMAL_CATEGORY_DAILY_LIMIT
         )
 
