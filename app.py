@@ -23,6 +23,17 @@ from pathlib import Path
 BASE_DIR = Path(__file__).parent
 CSV_FILE_PATH = BASE_DIR / "hr_news.csv"
 
+# 회사 소식 카테고리 (수집기의 CATEGORY_NOTA와 같은 값이어야 함)
+NOTA_CATEGORY = "오늘의 노타"
+
+# 화면에 표시하는 HR 카테고리 (수집기의 카테고리 이름과 같은 값이어야 함)
+HR_CATEGORIES = [
+    "HR 제도·조직운영",
+    "노동법·정책·판례",
+    "보상·노사관계",
+    "채용·인력운영",
+]
+
 
 st.set_page_config(
     page_title="HR 뉴스 대시보드",
@@ -72,10 +83,10 @@ st.markdown(
     }
 
     /* ============================================
-       오늘의 스마일게이트
+       오늘의 노타
        ============================================ */
 
-    .sg-container {
+    .nota-container {
         background-color: #1b2230;
         border: 1px solid #283244;
         border-radius: 9px;
@@ -85,7 +96,7 @@ st.markdown(
         box-shadow: 0 2px 8px rgba(15, 23, 42, 0.10);
     }
 
-    .sg-title {
+    .nota-title {
         font-size: 14px;
         font-weight: 700;
         color: #ffffff;
@@ -93,7 +104,7 @@ st.markdown(
         letter-spacing: -0.2px;
     }
 
-    .sg-card {
+    .nota-card {
         background-color: #242d3f;
         border: 1px solid #303b50;
         border-radius: 6px;
@@ -104,16 +115,16 @@ st.markdown(
             background-color 0.18s ease;
     }
 
-    .sg-card:last-child {
+    .nota-card:last-child {
         margin-bottom: 0;
     }
 
-    .sg-card:hover {
+    .nota-card:hover {
         border-color: #64748b;
         background-color: #293449;
     }
 
-    .sg-card-header {
+    .nota-card-header {
         padding: 8px 11px;
         font-size: 11px;
         font-weight: 600;
@@ -123,14 +134,14 @@ st.markdown(
         min-width: 0;
     }
 
-    .sg-date-tag {
+    .nota-date-tag {
         color: #60a5fa;
         font-weight: 700;
         margin-right: 8px;
         flex-shrink: 0;
     }
 
-    .sg-title-text {
+    .nota-title-text {
         display: block;
         min-width: 0;
         overflow: hidden;
@@ -138,7 +149,7 @@ st.markdown(
         white-space: nowrap;
     }
 
-    .sg-card-body {
+    .nota-card-body {
         max-height: 0;
         overflow: hidden;
         padding: 0 11px;
@@ -148,7 +159,7 @@ st.markdown(
             padding 0.25s ease-out;
     }
 
-    .sg-card:hover .sg-card-body {
+    .nota-card:hover .nota-card-body {
         max-height: 1800px !important;
         padding: 10px 11px;
         border-top: 1px solid #344056;
@@ -256,14 +267,14 @@ st.markdown(
        카드 상세 내용
        ============================================ */
 
-    .summary-title-sg {
+    .summary-title-nota {
         color: #fca5a5;
         font-weight: 700;
         font-size: 11px;
         margin-bottom: 4px;
     }
 
-    .summary-box-sg {
+    .summary-box-nota {
         font-size: 11px;
         color: #d6deea;
         line-height: 1.55;
@@ -1311,7 +1322,7 @@ def build_link_html(
 
 def build_card_html(
     row: pd.Series,
-    is_sg: bool = False
+    is_nota: bool = False
 ) -> str:
 
     checkpoints = parse_checkpoints(
@@ -1427,29 +1438,29 @@ def build_card_html(
     )
 
     # ========================================================
-    # 오늘의 스마일게이트
+    # 오늘의 노타
     # ========================================================
 
-    if is_sg:
+    if is_nota:
 
         return (
-            '<div class="sg-card">'
+            '<div class="nota-card">'
 
-            '<div class="sg-card-header">'
-            f'<span class="sg-date-tag">{date_str}</span>'
-            f'<span class="sg-title-text" '
+            '<div class="nota-card-header">'
+            f'<span class="nota-date-tag">{date_str}</span>'
+            f'<span class="nota-title-text" '
             f'title="{clean_title}">'
             f'{clean_title}'
             '</span>'
             '</div>'
 
-            '<div class="sg-card-body">'
+            '<div class="nota-card-body">'
 
-            '<div class="summary-title-sg">'
+            '<div class="summary-title-nota">'
             '주요 요약'
             '</div>'
 
-            f'<div class="summary-box-sg">'
+            f'<div class="summary-box-nota">'
             f'{summary}'
             '</div>'
 
@@ -1778,49 +1789,49 @@ with st.sidebar:
     )
 
 # ============================================================
-# 오늘의 스마일게이트
+# 오늘의 노타
 # ============================================================
 
-smilegate_data = df[
+nota_data = df[
     df["category"]
-    == "오늘의 스마일게이트"
+    == NOTA_CATEGORY
 ]
 
-if not smilegate_data.empty:
-    smilegate_cards = "".join(
+if not nota_data.empty:
+    nota_cards = "".join(
         build_card_html(
             row,
-            is_sg=True
+            is_nota=True
         )
         for _, row
-        in smilegate_data.head(
+        in nota_data.head(
             5
         ).iterrows()
     )
 
-    smilegate_html = (
-        '<div class="sg-container">'
-        '<div class="sg-title">'
-        "🚀오늘의 스마일게이트"
+    nota_html = (
+        '<div class="nota-container">'
+        '<div class="nota-title">'
+        f"🚀{NOTA_CATEGORY}"
         "</div>"
-        f"{smilegate_cards}"
+        f"{nota_cards}"
         "</div>"
     )
 
 else:
-    smilegate_html = (
-        '<div class="sg-container">'
-        '<div class="sg-title">'
-        "오늘의 스마일게이트"
+    nota_html = (
+        '<div class="nota-container">'
+        '<div class="nota-title">'
+        f"{NOTA_CATEGORY}"
         "</div>"
         '<div style="color:#94a3b8;font-size:11px;">'
-        "최근 스마일게이트 기사가 없습니다."
+        "최근 노타 기사가 없습니다."
         "</div>"
         "</div>"
     )
 
 st.markdown(
-    smilegate_html,
+    nota_html,
     unsafe_allow_html=True
 )
 
@@ -1829,9 +1840,11 @@ st.markdown(
 # 필터 적용
 # ============================================================
 
+# HR 4개 카테고리만 남깁니다.
+# (노타 기사와, CSV에 남아 있는 예전 카테고리 기사가
+#  검색 결과 건수에 섞이지 않도록)
 filtered_df = df[
-    df["category"]
-    != "오늘의 스마일게이트"
+    df["category"].isin(HR_CATEGORIES)
 ].copy()
 
 
